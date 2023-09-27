@@ -1,6 +1,6 @@
 import { CoreMenu } from '@core/types';
 
-//? DOC: http://localhost:7777/demo/vuexy-angular-admin-dashboard-template/documentation/guide/development/navigation-menus.html#interface
+//? DOC: http://localhost:7777/demo/   /documentation/guide/development/navigation-menus.html#interface
 
 export const menu: CoreMenu[] = [
   // Dashboard
@@ -28,34 +28,32 @@ export const menu: CoreMenu[] = [
       {
         id: 'email',
         title: 'Offre',
-        translate: 'MENU.APPS.EMAIL',
+        
         type: 'item',
-        icon: 'mail',
+        icon: 'package',
         url: 'apps/Offre/listOff'
       },
       {
         id: 'chat',
-        title: 'Chat',
-        translate: 'MENU.APPS.CHAT',
+        title: 'voiture',
         type: 'item',
-        icon: 'message-square',
-        url: 'apps/chat'
+        icon:'package',
+        url: 'apps/voiture/listCar'
       },
       {
-        id: 'todo',
-        title: 'Todo',
-        translate: 'MENU.APPS.TODO',
-        type: 'item',
-        icon: 'check-square',
-        url: 'apps/todo'
+        id: 'Paiement',
+        title: 'Paiement',
+         type: 'item',
+        icon: 'dollar-sign',
+        url: 'apps/paiement/pay'
       },
       {
-        id: 'calendar',
-        title: 'Calendar',
-        translate: 'MENU.APPS.CALENDAR',
+        id: 'Commande',
+        title: 'Commande',
+    
         type: 'item',
-        icon: 'calendar',
-        url: 'apps/calendar'
+        icon: 'command',
+        url: 'apps/commande/com'
       },
       {
         id: 'pages',

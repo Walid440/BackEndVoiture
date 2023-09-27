@@ -39,7 +39,12 @@ import { AddOffreComponent } from './main/apps/Offre/add-offre/add-offre.compone
 import { ListOffreComponent } from './main/apps/Offre/list-offre/list-offre.component';
 import { UpdateOffreComponent } from './main/apps/Offre/update-offre/update-offre.component';
 import { PageLayoutsModule } from './main/ui/page-layouts/page-layouts.module';
- 
+import { ListVoitureComponent } from './main/apps/voiture/list-voiture/list-voiture.component';
+import { AddVoitureComponent } from './main/apps/voiture/add-voiture/add-voiture.component';
+import { UpdateVoitureComponent } from './main/apps/voiture/update-voiture/update-voiture.component';
+import { ListPaiementComponent } from './main/apps/paiement/list-paiement/list-paiement.component';
+import { ListCommandeComponent } from './main/apps/commande/list-commande/list-commande.component';
+  
  
 const appRoutes: Routes = [
   {
@@ -86,6 +91,11 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'voiture',
+    loadChildren: () => import('./main/apps/voiture/voiture.module').then(m => m.voitureModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'charts-and-maps',
     loadChildren: () => import('./main/charts-and-maps/charts-and-maps.module').then(m => m.ChartsAndMapsModule),
     canActivate: [AuthGuard]
@@ -110,7 +120,13 @@ const appRoutes: Routes = [
     SubMenuCustomContextMenuComponent,
   UpdateOffreComponent,
     ListOffreComponent,
-AddOffreComponent,    
+AddOffreComponent,  
+ListVoitureComponent,
+AddVoitureComponent,
+UpdateVoitureComponent,
+ListPaiementComponent,
+ListCommandeComponent
+
     ],
   imports: [
   

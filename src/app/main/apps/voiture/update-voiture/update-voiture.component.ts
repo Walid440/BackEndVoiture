@@ -1,19 +1,17 @@
-import { HttpHeaders } from '@angular/common/http';
- 
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { offre } from 'app/auth/models/offre';
+import { produit } from 'app/auth/models/produit';
 import { ServicesService } from '../../services.service';
-//import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
- 
+
 @Component({
-  selector: 'app-add-offre',
-  templateUrl: './add-offre.component.html',
-  styleUrls: ['./add-offre.component.scss']
+  selector: 'app-update-voiture',
+  templateUrl: './update-voiture.component.html',
+  styleUrls: ['./update-voiture.component.scss']
 })
-export class AddOffreComponent implements OnInit {
+export class UpdateVoitureComponent implements OnInit {
 
   editForm:FormGroup;
     public sidebarToggleRef = false;
@@ -25,7 +23,7 @@ export class AddOffreComponent implements OnInit {
     public previousStatusFilter = '';
     closeResult :String;
     public searchValue = '';
-    personl:offre=new offre(); 
+    personl:produit=new produit(); 
     reactiveForm: FormGroup;
     delete=false;
     userFile;
@@ -49,16 +47,22 @@ export class AddOffreComponent implements OnInit {
   
     ngOnInit(): void {
      
-      this.editForm=new FormGroup({
-        nomOffre:new FormControl('',[Validators.required]),
-        dateOffre:new FormControl('',[Validators.required]),
-        adresse:new FormControl('',[Validators.required]),
-        photo:new FormControl('',[Validators.required]),
-        photo2:new FormControl('',[Validators.required,Validators.nullValidator])
-      });
+      
+      this.editForm = this.fb.group({
+        id:[this.personl.id, Validators.required],
+            nomProd:[this.personl.nomProd, Validators.required],
+            modele: [this.personl.modele, Validators.required],
+            annee: [this.personl.annee, Validators.required],
+            marque: [this.personl.marque, Validators.required],
+            prix: [this.personl.prix, Validators.required],
+          })
+
+
+          this.listVehicule();
+        }
         
-   this.listVehicule()
-    }
+   
+    
     filterUpdate(event) {
       // Reset ng-select on search
      
@@ -104,38 +108,31 @@ export class AddOffreComponent implements OnInit {
   
   }
   onSubmit() {
-    let headers = new HttpHeaders();
-  
-    const formData = new  FormData();
-    const article = this.editForm.value;
-  /* this.personl.nomOffre=article.nomOffre;
-    this.personl.dateOffre=article.dateOffre;
-    this.personl.adresse=article.adresse;
-   this.personl.photo2=article.photo2+".png";
-   this.personl.photo=article.userFile;*/
-  // Créez une date au format JavaScript
-     // Convertissez-la en chaîne au format "YYYY-MM-DD"
    
-    formData.append('nomOffre',article.nomOffre);
-    formData.append('dateOffre',article.dateOffre);
-    formData.append('adresse',article.adresse);
-    formData.append('photo2',article.photo2+".png");
-    formData.append('photo',article.photo);
-    formData.append('file',this.userFile);  
+  
+    //const formData = new  FormData();
+    const article = this.editForm.value;
+   this.personl.nomProd=article.nomProd;
+    this.personl.marque=article.marque;
+    this.personl.modele=article.modele;
+   this.personl.annee=article.annee;
+   this.personl.prix=article.prix;
+  
+   // formData.append('file',this.userFile);  
  
 
      //console.log("cabin"+this.myGroup.value.cabins)
    // this.personl.cabins=article.cabin;*/
    // this.personl.cabins=article.cabin;
-     
-    this.Person.CreateOffre(formData).subscribe( data => {   
+    
+    this.Person.EditProd(this.personl).subscribe( data => {   
       this.Loading();
        
   
      });
+    }
     
-    
-  }
+  
   listVehicule(){
 
     this.Person.getAllVehicule().subscribe( data => {   
@@ -176,8 +173,5 @@ console.log(data)
       this.imgURL = reader.result; 
     }
   }
-  
   }
-  
-
 }

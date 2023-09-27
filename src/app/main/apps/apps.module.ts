@@ -43,6 +43,21 @@ const routes: Routes = [
     path: 'Offre',
     loadChildren: () => import('./Offre/offre.module').then(m => m.OffreModule)
   }
+  ,
+  {
+    path: 'voiture',
+    loadChildren: () => import('./voiture/voiture.module').then(m => m.voitureModule)
+  }
+  ,
+  {
+    path: 'paiement',
+    loadChildren: () => import('./paiement/paiement.module').then(m => m.paiementModule)
+  }
+  ,
+  {
+    path: 'commande',
+    loadChildren: () => import('./commande/commande.module').then(m => m.CommandeModule)
+  }
 ];
 
 FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]);

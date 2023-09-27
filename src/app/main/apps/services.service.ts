@@ -7,6 +7,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { UserService } from 'app/auth/service';
 import { offre } from 'app/auth/models/offre';
+import { produit } from 'app/auth/models/produit';
+import { commande } from 'app/auth/models/commande';
  
  
 @Injectable({
@@ -47,18 +49,37 @@ export class ServicesService {
     return this.http.put<offre>("http://localhost:8090/offre/UpdateOffre",person);
     
   }
+  public EditProd(person:produit){
+    return this.http.put<any>("http://localhost:8090/UpdateProduit",person);
+    
+  }
+  public Paiement(){
+    return this.http.get<any>("http://localhost:8090/AllPaiement");
+    
+  }
   public CreateOffre(person:FormData){
     return this.http.post<offre>("http://localhost:8090/CreateOffre",person);
     
   }
  
-
+  public CreateProduit(person:produit){
+    return this.http.post<any>("http://localhost:8090/CreateProd",person);
+    
+  }
     public search(start:string,end:string){
     return this.http.get<offre>("http://localhost:8089/SpringMVC/offre/calendars/search/"+start+"/"+end);
     
   }
   public DeleteOffre(id:number){
     return this.http.delete<offre>("http://localhost:8090/DeleteOffre/"+id);
+    
+  }
+  public DeleteProd(id:number){
+    return this.http.delete<produit>("http://localhost:8090/DeleteProd/"+id);
+    
+  }
+  public DeleteCommande(id:number){
+    return this.http.delete<commande>("http://localhost:8090/DeleteCommande/"+id);
     
   }
   public DelteFeedBack(id:number){
@@ -79,10 +100,14 @@ export class ServicesService {
 
 
   }
-  public getAllFeed()
+  public getAllVehicule()
   {
-    return this.http.get<offre>("http://localhost:8089/SpringMVC/Feed/getAllFeedBack");
+    return this.http.get<any>("http://localhost:8090/AllProd");
 
+  }
+  public getAllCommande()
+  {
+    return this.http.get<any>("http://localhost:8090/allCom");
 
   }
   public getCalendarByid(id:number)

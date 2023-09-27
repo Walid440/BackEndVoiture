@@ -1,0 +1,83 @@
+
+ 
+  
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Update Car</h4>
+     
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editForm"  enctype="multipart/form-data"    >
+          
+         
+         
+        
+        <div class="form-group"  >
+          <label>Nom Produit </label>
+          <input type="text" class="form-control"   formControlName="nomProd" id="nomProd"    >
+           
+          <div class="err" *ngIf=" f.nomProd.invalid &&(f.nomProd.touched ||f.nomProd.touched)">
+              <div *ngIf="f.nomProd.errors.required" class="text-danger">*Nom Produit is required
+               </div>
+        </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Marque </label>
+          <input type="text" class="form-control" formControlName="marque" id="marque">
+          <div class="err" *ngIf="f.marque.invalid && f.marque.touched">
+            <div *ngIf="f.marque.errors && f.marque.errors.required" class="text-danger">*marque is required</div>
+        </div>
+          
+        
+      
+       </div> 
+        
+        <div class="form-group">
+          <label>Modele </label>
+          <input type="text" class="form-control" formControlName="modele" id="modele"   >
+          <div class="err" *ngIf="f.modele.invalid && f.modele.touched">
+            <div *ngIf="f.modele.errors && f.modele.errors.required" class="text-danger">*modele is required</div>
+        
+       
+</div>
+
+      
+     
+        
+<div class="form-group">
+    <label>Prix </label>
+    <input type="text" class="form-control" formControlName="prix" id="prix"   >
+    <div class="err" *ngIf="f.prix.invalid && f.prix.touched">
+        <div *ngIf="f.prix.errors && f.prix.errors.required" class="text-danger">*prix is required</div>
+    
+   
+</div>
+        
+<div class="form-group">
+    <label>Annee </label>
+    <input type="text" class="form-control" formControlName="annee" id="annee"   >
+    <div class="err" *ngIf="f.annee.invalid && f.annee.touched">
+        <div *ngIf="f.annee.errors && f.annee.errors.required" class="text-danger">*annee is required</div>
+    
+ 
+</div>
+  <div class="form-group">    <div class="modal-body" >
+      
+ 
+  <button  [hidden]="edited" type="submit" class="btn btn-dark" (click)="onSubmit()"  ><i class="fa fa-database"></i>  <img *ngIf="IsLoading" src="assets/images/loading.gif" style="width: 24px;"> Submit
+   
+  </button>
+
+  <button  class="btn btn-primary mr-2" (click)="modal.close('Cancel')">Fermer</button>
+</div>
+  </div>
+</div>
+</div>
+</div>
+ 
+
+      </form>
+            </div>
+       
+    
+      
