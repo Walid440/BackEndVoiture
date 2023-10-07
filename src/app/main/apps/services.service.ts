@@ -100,6 +100,12 @@ export class ServicesService {
 
 
   }
+  public getCommentStatistic(date:String)
+  {
+    return this.http.get<any>("http://localhost:8090/stat/"+date);
+
+
+  }
   public getAllVehicule()
   {
     return this.http.get<any>("http://localhost:8090/AllProd");

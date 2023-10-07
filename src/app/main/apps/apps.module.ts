@@ -57,6 +57,10 @@ const routes: Routes = [
   {
     path: 'commande',
     loadChildren: () => import('./commande/commande.module').then(m => m.CommandeModule)
+  } ,
+  {
+    path: 'comment',
+    loadChildren: () => import('./commentaire/commentaire.module').then(m => m.CommentModule)
   }
 ];
 

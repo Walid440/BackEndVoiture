@@ -37,7 +37,7 @@ export const menu: CoreMenu[] = [
         id: 'chat',
         title: 'voiture',
         type: 'item',
-        icon:'package',
+        icon:'truck',
         url: 'apps/voiture/listCar'
       },
       {
@@ -54,87 +54,16 @@ export const menu: CoreMenu[] = [
         type: 'item',
         icon: 'command',
         url: 'apps/commande/com'
+      },{
+        id: 'Commentaire',
+        title: 'Commentaire',
+      
+        type: 'item',
+        icon:'bar-chart',
+        url: 'apps/comment/comment'
       },
-      {
-        id: 'pages',
-        title: 'Pages',
-        translate: 'MENU.PAGES.SECTION',
-        type: 'collapsible',
-        icon: 'file-text',
-        children: [
-          {
-            id: 'authentication',
-            title: 'Authentication',
-            translate: 'MENU.PAGES.AUTH.COLLAPSIBLE',
-            type: 'collapsible',
-            icon: 'circle',
-            children: [
-              {
-                id: 'login-v1',
-                title: 'Login V1',
-                translate: 'MENU.PAGES.AUTH.LOGIN1',
-                type: 'item',
-                url: 'pages/authentication/login-v1',
-                openInNewTab: true
-              },
-              {
-                id: 'login-v2',
-                title: 'Login V2',
-                translate: 'MENU.PAGES.AUTH.LOGIN2',
-                type: 'item',
-                url: 'pages/authentication/login-v2',
-                openInNewTab: true
-              },
-              {
-                id: 'register-v1',
-                title: 'Register V1',
-                translate: 'MENU.PAGES.AUTH.REGISTER1',
-                type: 'item',
-                url: 'pages/authentication/register-v1',
-                openInNewTab: true
-              },
-              {
-                id: 'register-v2',
-                title: 'Register V2',
-                translate: 'MENU.PAGES.AUTH.REGISTER2',
-                type: 'item',
-                url: 'pages/authentication/register-v2',
-                openInNewTab: true
-              },
-              {
-                id: 'forgot-password-v1',
-                title: 'Forgot Password V1',
-                translate: 'MENU.PAGES.AUTH.FORGOTPASSWORD1',
-                type: 'item',
-                url: 'pages/authentication/forgot-password-v1',
-                openInNewTab: true
-              },
-              {
-                id: 'forgot-password-v2',
-                title: 'Forgot Password V2',
-                translate: 'MENU.PAGES.AUTH.FORGOTPASSWORD2',
-                type: 'item',
-                url: 'pages/authentication/forgot-password-v2',
-                openInNewTab: true
-              },
-              {
-                id: 'reset-password-v1',
-                title: 'Reset Password V1',
-                translate: 'MENU.PAGES.AUTH.RESETPASSWORD1',
-                type: 'item',
-                url: 'pages/authentication/reset-password-v1',
-                openInNewTab: true
-              },
-              {
-                id: 'reset-password-v2',
-                title: 'Reset Password V2',
-                translate: 'MENU.PAGES.AUTH.RESETPASSWORD2',
-                type: 'item',
-                url: 'pages/authentication/reset-password-v2',
-                openInNewTab: true
-              }
-            ]
-          },
+     
+          
           {
             id: 'account-settings',
             title: 'Account Settings',
@@ -417,8 +346,8 @@ export const menu: CoreMenu[] = [
           
         ]
       }
-    ]
-  },
+    ,
+  
   // User Interface
   {
     id: 'user-interface',

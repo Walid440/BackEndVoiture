@@ -44,6 +44,7 @@ import { AddVoitureComponent } from './main/apps/voiture/add-voiture/add-voiture
 import { UpdateVoitureComponent } from './main/apps/voiture/update-voiture/update-voiture.component';
 import { ListPaiementComponent } from './main/apps/paiement/list-paiement/list-paiement.component';
 import { ListCommandeComponent } from './main/apps/commande/list-commande/list-commande.component';
+import { ListCommentaireComponent } from './main/apps/commentaire/list-commentaire/list-commentaire.component';
   
  
 const appRoutes: Routes = [
@@ -125,7 +126,8 @@ ListVoitureComponent,
 AddVoitureComponent,
 UpdateVoitureComponent,
 ListPaiementComponent,
-ListCommandeComponent
+ListCommandeComponent,
+ListCommentaireComponent
 
     ],
   imports: [
