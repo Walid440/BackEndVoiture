@@ -179,7 +179,7 @@
                       <a routerLink="/apps/user/user-view/{{ row.prix}}" class="font-medium-1 d-block"
                         ><span class="font-weight-bold">{{ name }}</span></a
                       >
-                      <span class="text-muted font-small-2"> <b>{{ row.adresse }}</b></span>
+                      <span class="text-muted font-small-2"> <b>{{ row.status }}</b></span>
                     </div>
                   </div>
                 </ng-template>
@@ -245,6 +245,11 @@
                     &nbsp;
                     <span >  <a class="fa fa-trash" href="javascript:void(0);" container="body" placement="top" ngbTooltip="Delete" (click) = "deleteItem(row)"
                       ><i size="18"  ></i
+                    >       </a></span>
+
+                    &nbsp;
+                    <span >  <a href="javascript:void(0);" container="body" placement="top" ngbTooltip="Printer" (click) = "PrintItem(row)"
+                      ><i size="18" data-feather="printer" ></i
                     >       </a></span>
                   </div>
                 </div>

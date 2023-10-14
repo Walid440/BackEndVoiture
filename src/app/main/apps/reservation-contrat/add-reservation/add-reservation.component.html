@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Contrat de Location de Voiture</title>
+    <link rel="stylesheet" type="text/css"  >
+</head>
+
+
+<body><button (click)="printToPDF()">Exporter en PDF</button>
+    <div class="container" id="content" #content>
+        
+        <div class="header">
+            <img src="logo-entreprise.png" alt="Logo de l'entreprise">
+            <h1>Contrat de Location de Voiture</h1>
+
+        </div>
+ 
+       <br>
+       <br>
+        <p><strong>Date et heure de Départ   :</strong> {{this.userlist["dateDebut"]}}</p>
+        <p><strong>Date et heure de Retour  :</strong> {{this.userlist["dateFin"]}}</p>
+ 
+        
+
+
+        <h2>Renseignements Relatif au Conducteur </h2>
+        <p><strong>Nom   :</strong> {{this.userlist["clientNom"]}}</p>
+        <p><strong>Prenom  :</strong>{{this.userlist["clientPrenom"] }}</p>
+         <p><strong>Telephone :</strong> {{this.userlist["telephone"]}}</p>
+         <p><strong>Email :</strong>{{this.userlist["clientmail"]}} </p>
+         <p><strong>Né(e) le:</strong>{{this.userlist["niassance"]}} </p>
+         <p><strong>Permis de conduire</strong> {{this.userlist["clientPermis"] }}</p>  <p><strong>Delivré le :</strong> {{this.userlist["clientDelivre"] }}</p>
+  
+  
+
+        <h2>Informations sur la Voiture</h2>
+        <p><strong>Modèle de la Voiture :</strong> {{this.userlist["voiture"]}}</p>
+        <p><strong>Immatriculation :</strong> {{this.userlist["voiture"]}}</p>
+        <img src="schema-voiture.png" alt="Schéma de la voiture">
+
+        <h2>Mode de Paiement</h2>
+        <label>
+            <input type="checkbox" name="payment" value="carte"> Paiement par Carte de Crédit
+        </label>
+        <label>
+            <input type="checkbox" name="payment" value="espece"checked> Paiement en Espèces
+        </label>
+        <label>
+            <input type="checkbox" name="payment" value="cheque"> Paiement par Chèque
+        </label>
+        <h2>Prix Total</h2>
+        <p><strong>Prix Total :</strong> {{this.userlist["prix"]}} euro <!-- Remplacez par le montant réel -->
+
+        <div class="signature">
+            <p>Signature du Client :</p>
+            <img src="signature-client.png" alt="Signature du client">
+        </div>
+    </div>
+ 
+</body>
+</html>

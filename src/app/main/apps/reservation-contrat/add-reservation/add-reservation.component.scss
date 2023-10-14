@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+.th{
+    font-size: 12px;
+}
+.container {
+    background-color: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.header img {
+    max-width: 100px;
+    margin-right: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+h2 {
+    color: #555;
+    margin-top: 20px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.signature {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.signature img {
+    max-width: 150px;
+    border: 1px solid #ccc;
+}
+ 
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        width: 21cm;
+        min-height: 29.7cm;
+        padding: 1cm;
+        margin: 0 auto;
+        border: 1px solid #d3d3d3;
+    }
+
+    .header {
+        text-align: center;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin-top: 1em;
+    }
+
+    p {
+        font-size: 14px;
+        margin: 0;
+    }
+
+    label {
+        font-size: 14px;
+        display: block;
+    }
+
+    .signature {
+        text-align: right;
+        margin-top: 2em;
+    }
+
+    @page {
+        size: A4;
+        margin: 1cm;
+    }
+ 

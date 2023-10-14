@@ -62,6 +62,14 @@ export const menu: CoreMenu[] = [
         icon:'bar-chart',
         url: 'apps/comment/comment'
       },
+      {
+        id: 'Contrat',
+        title: 'Contrat',
+      
+        type: 'item',
+        icon:'menu',
+        url: 'apps/contrat/ListContrat'
+      },
      
           
           {

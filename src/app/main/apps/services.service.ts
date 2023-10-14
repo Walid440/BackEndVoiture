@@ -33,7 +33,10 @@ export class ServicesService {
     return this.http.get<offre>("http://localhost:8090/getIdOffre"+id);
     
   }
-
+  public getCommandeById(id:number){
+    return this.http.get<commande>("http://localhost:8090/getIdCommande/"+id);
+    
+  }
   
   create(id:number,start:string,end:string,offre: FormData) {
     return this.http.post<offre>("http://localhost:8089/SpringMVC/offre/CreateF/"+start+"/"+end+"/"+id,offre);  }

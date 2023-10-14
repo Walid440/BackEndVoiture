@@ -45,6 +45,9 @@ import { UpdateVoitureComponent } from './main/apps/voiture/update-voiture/updat
 import { ListPaiementComponent } from './main/apps/paiement/list-paiement/list-paiement.component';
 import { ListCommandeComponent } from './main/apps/commande/list-commande/list-commande.component';
 import { ListCommentaireComponent } from './main/apps/commentaire/list-commentaire/list-commentaire.component';
+import { ReservationContratComponent } from './main/apps/reservation-contrat/reservation-contrat.component';
+import { NgxPrintModule } from 'ngx-print';
+ 
   
  
 const appRoutes: Routes = [
@@ -97,6 +100,16 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'contrat',
+    loadChildren: () => import('./main/apps/reservation-contrat/contrat.module').then(m => m.ContratModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'ListContrat',
+    loadChildren: () => import('./main/apps/reservation-contrat/contrat.module').then(m => m.ContratModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'charts-and-maps',
     loadChildren: () => import('./main/charts-and-maps/charts-and-maps.module').then(m => m.ChartsAndMapsModule),
     canActivate: [AuthGuard]
@@ -127,18 +140,19 @@ AddVoitureComponent,
 UpdateVoitureComponent,
 ListPaiementComponent,
 ListCommandeComponent,
-ListCommentaireComponent
-
+ListCommentaireComponent,
+ ReservationContratComponent
     ],
   imports: [
-  
-    FormsModule,
+    NgxPrintModule,
+     FormsModule,
     ReactiveFormsModule,
    DatatablesModule,
     NgxDatatableModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    
     HttpClientInMemoryWebApiModule.forRoot(FakeDbService, {
       delay: 0,
       passThruUnknownUrl: true

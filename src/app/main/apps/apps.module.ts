@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatatablesModule } from '../tables/datatables/datatables.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { UpdateOffreComponent } from './Offre/update-offre/update-offre.component';
+import { AddReservationComponent } from './reservation-contrat/add-reservation/add-reservation.component';
  
 
 // routing
@@ -55,6 +56,11 @@ const routes: Routes = [
   }
   ,
   {
+    path: 'contrat',
+    loadChildren: () => import('./reservation-contrat/contrat.module').then(m => m.ContratModule)
+  }
+  ,
+  {
     path: 'commande',
     loadChildren: () => import('./commande/commande.module').then(m => m.CommandeModule)
   } ,
@@ -69,6 +75,8 @@ FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, i
 @NgModule({
   declarations: [
 
+  
+    AddReservationComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [CommonModule, RouterModule.forChild(routes),ReactiveFormsModule,FormsModule,DatatablesModule,NgxDatatableModule],

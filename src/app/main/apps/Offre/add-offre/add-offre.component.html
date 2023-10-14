@@ -10,67 +10,63 @@
           
          
          
-        <div class="form-group">
-   
-          
-        </div>  
-        <div class="form-group"  >
-          <label>Nom Offre </label>
-          <input type="text" class="form-control"   formControlName="nomOffre" id="nomOffre"    >
            
-          <div class="err" *ngIf=" f.nomOffre.invalid &&(f.nomOffre.touched ||f.nomOffre.touched)">
-              <div *ngIf="f.nomOffre.errors.required" class="text-danger">*nomOffre is required
-               </div>
+          <div class="form-group"  >
+            <label>Nom Offre </label>
+            <input type="text" class="form-control"   formControlName="nomOffre" id="nomOffre"    >
+             
+            <div class="err" *ngIf=" f.nomOffre.invalid &&(f.nomOffre.touched ||f.nomOffre.touched)">
+                <div *ngIf="f.nomOffre.errors.required" class="text-danger">*nomOffre is required
+                 </div>
+          </div>
+            </div>
+          <div class="form-group">
+            <label>DateOffre </label>
+            <input type="date" class="form-control" formControlName="dateOffre" id="dateOffre">
+            <div class="err" *ngIf=" f.dateOffre.invalid &&(f.dateOffre.touched ||f.dateOffre.touched)">
+                <div *ngIf="f.dateOffre.errors.required" class="text-danger">*dateOffre is required
+                 </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label>Adresse </label>
+            <input type="text" class="form-control" formControlName="adresse" id="adresse"   >
+            <div class="err" *ngIf=" f.adresse.invalid &&(f.adresse.touched ||f.adresse.touched)">
+                <div *ngIf="f.adresse.errors.required" class="text-danger">*Adresse is required
+                 
         </div>
           </div>
-        <div class="form-group">
-          <label>DateOffre </label>
-          <input type="date" class="form-control" formControlName="dateOffre" id="dateOffre">
-          <div class="err" *ngIf=" f.dateOffre.invalid &&(f.dateOffre.touched ||f.dateOffre.touched)">
-              <div *ngIf="f.dateOffre.errors.required" class="text-danger">*dateOffre is required
-               </div>
-        </div>
-        </div>
-        <div class="form-group">
-          <label>Adresse </label>
-          <input type="text" class="form-control" formControlName="adresse" id="adresse"   >
-          <div class="err" *ngIf=" f.adresse.invalid &&(f.adresse.touched ||f.adresse.touched)">
-              <div *ngIf="f.adresse.errors.required" class="text-danger">*Adresse is required
-               
-      </div>
-        </div>
-        <div class="form-group">
-        <label >type D'offre :</label>
-<select id="photo2"  class="form-control" formControlName="photo2" name="photo2" >
-  <option value="vente">Vente</option>
-  <option value="location">Location</option>
-  <option value="echange">Echange</option>
-</select>
-</div>
- 
-    
-        <div class="form-group">
-            <label>File Upload  </label>
-                <input type="file" accept="image/*" (change)="onSelectFile($event)">
-                <img [src]="imgURL" height="140" *ngIf="imgURL">
-                
-         </div>  
-       
-        <div class="form-group">    <div class="modal-body" >
-              
-         
-          <button  [hidden]="edited" type="submit" class="btn btn-dark" (click)="onSubmit()"  ><i class="fa fa-database"></i>  <img *ngIf="IsLoading" src="assets/images/loading.gif" style="width: 24px;"> Submit
-           
-          </button>
-        
-          <button  class="btn btn-primary mr-2" (click)="modal.close('Cancel')">Fermer</button>
+          <div class="form-group">
+          <label >type D'offre :</label>
+  <select id="photo2"  class="form-control" formControlName="photo2" name="photo2" >
+    <option value="vente">Vente</option>
+    <option value="location">Location</option>
+    <option value="echange">Echange</option>
+  </select>
+  </div>
+   
       
-     </div>
-    </div>
-        </div>
-        
-      </form>
-            </div>
+          <div class="form-group">
+              <label>File Upload  </label>
+                  <input type="file" accept="image/*" (change)="onSelectFile($event)">
+                  <img [src]="imgURL" height="140" *ngIf="imgURL">
+                  
+           </div>  
+         
+          <div class="form-group">    <div class="modal-body" >
+                
+           
+            <button  [hidden]="edited" type="submit" class="btn btn-dark" (click)="onSubmit()"  ><i class="fa fa-database"></i>  <img *ngIf="IsLoading" src="assets/images/loading.gif" style="width: 24px;"> Submit
+             
+            </button>
+          
+            <button  class="btn btn-primary mr-2" (click)="modal.close('Cancel')">Fermer</button>
+      </div>
+          </div>
+          </div>
+        </form>
+      </div>
+      
        
     
       

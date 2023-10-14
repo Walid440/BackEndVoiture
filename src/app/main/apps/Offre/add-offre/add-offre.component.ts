@@ -8,6 +8,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
  
+ 
 @Component({
   selector: 'app-add-offre',
   templateUrl: './add-offre.component.html',
@@ -99,7 +100,7 @@ export class AddOffreComponent implements OnInit {
         this.editForm.enabled;
        
       }, 1820);
-  
+  this.modal.close();
      
   
   }
@@ -123,15 +124,17 @@ export class AddOffreComponent implements OnInit {
     formData.append('photo',article.photo);
     formData.append('file',this.userFile);  
  
-
-     //console.log("cabin"+this.myGroup.value.cabins)
+      //console.log("cabin"+this.myGroup.value.cabins)
    // this.personl.cabins=article.cabin;*/
    // this.personl.cabins=article.cabin;
      
     this.Person.CreateOffre(formData).subscribe( data => {   
       this.Loading();
-       
-  
+       if(article.photo2=="vente")
+       {
+     //this.modalService.open(VenteComponent);
+    
+ }
      });
     
     
