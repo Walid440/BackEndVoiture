@@ -1,21 +1,18 @@
-import { DatePipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpHeaders } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ColumnMode } from '@swimlane/ngx-datatable';
-import { commande } from 'app/auth/models/commande';
 import { offre } from 'app/auth/models/offre';
 import { ServicesService } from '../../services.service';
+import { echange } from 'app/auth/models/echange';
 
 @Component({
-  selector: 'app-contrat-echange',
-  templateUrl: './contrat-echange.component.html',
-  styleUrls: ['./contrat-echange.component.scss']
+  selector: 'app-add-echange',
+  templateUrl: './add-echange.component.html',
+  styleUrls: ['./add-echange.component.scss']
 })
-export class ContratEchangeComponent implements OnInit {
-
-  @ViewChild('content',{static:false})el!:ElementRef
+export class AddEchangeComponent implements OnInit {
   editForm:FormGroup;
   public sidebarToggleRef = false;
   public rows;
@@ -26,12 +23,12 @@ export class ContratEchangeComponent implements OnInit {
   public previousStatusFilter = '';
   closeResult :String;
   public searchValue = '';
-  personl:commande=new commande(); 
+  personl:echange=new echange(); 
   reactiveForm: FormGroup;
   delete=false;
   userFile;
-  userlist: any;
-  userlist1: any;
+  userlist:any;
+  userlist1:any;
   imgURL: any;
   imagePath: any;
   message: string;
@@ -47,16 +44,20 @@ export class ContratEchangeComponent implements OnInit {
   myGroup: FormGroup;
   IsLoading: boolean;
 list: offre;
-  data: any;
-  constructor( private datePipe: DatePipe, private http: HttpClient,private fb:FormBuilder,private modalService: NgbModal,public modal:NgbActiveModal, public Person: ServicesService) { }
-styleString:string = '';
+offre:any;
+  constructor(private fb:FormBuilder,private modalService: NgbModal,public modal:NgbActiveModal, public Person: ServicesService) { }
+
   ngOnInit(): void {
    
-  
-    this.ListCommandeByid()
-  
- this.Type()
- 
+    this.editForm=new FormGroup({
+      propritaire1:new FormControl('',[Validators.required]),
+      modele1:new FormControl('',[Validators.required]),
+      marque1:new FormControl('',[Validators.required]),
+      annee1:new FormControl('',[Validators.required]),
+      offre:new FormControl('',[Validators.required])
+     });
+      this.listOffre();
+ this.listVehicule()
   }
   filterUpdate(event) {
     // Reset ng-select on search
@@ -98,29 +99,50 @@ styleString:string = '';
       this.editForm.enabled;
      
     }, 1820);
-
+this.modal.close();
    
 
 }
+onSubmit() {
+  let headers = new HttpHeaders();
+
+  const formData = new  FormData();
+  const article = this.editForm.value;
+ this.personl.propritaire1=article.propritaire1;
+  this.personl.annee1=article.annee1;
+  this.personl.marque1=article.marque1;
+  this.personl.modele1=article.modele1;
+
+// Créez une date au format JavaScript
+   // Convertissez-la en chaîne au format "YYYY-MM-DD"
   
-Type() {
-  this.Person.getType(this.personl.id).subscribe((res: any) => {
-    this.userlist = res;
-    
-
-
-  });
-}
-ListCommandeByid() {
-  this.Person.getCommandeById(this.personl.id).subscribe((res: any) => {
-    this.userlist1 = res;
-    
-
+ 
+    //console.log("cabin"+this.myGroup.value.cabins)
+ // this.personl.cabins=article.cabin;*/
+ // this.personl.cabins=article.cabin;
+   
+ this.Person.CreateEchange(this.personl,article.offre).subscribe( data => {   
+    this.Loading();
      
-  });
+   });
+  
+  
 }
 
+listOffre(){
+  this.Person.getListOffre().subscribe( data => {   
+    this.userlist1=data;       
+    console.log("list1"+this.userlist1)
+        });
+}
+listVehicule(){
 
+  this.Person.getAllVehicule().subscribe( data => {   
+this.list=data;       
+
+console.log(data)
+   });
+}
 Loadin() {
   this.modal.close();
 
@@ -157,31 +179,4 @@ onSelectFile(event) {
 }
 
 
- 
-printToPDF() {
-  const printArea: HTMLElement = document.getElementById('content');
-  const printWindow = window.open('', 'PRINT')!;
-  printWindow.document.write(`<html><head><style>${this.styleString}</style></head><body>${printArea.innerHTML}</body>`);
-  printWindow.document.close();
-  printWindow.focus();
-  printWindow.print();
 }
-
-
-
- 
-
-
-}
-
-
-
- 
-
-
-
-
-
-
-
-

@@ -47,6 +47,8 @@ import { ListCommandeComponent } from './main/apps/commande/list-commande/list-c
 import { ListCommentaireComponent } from './main/apps/commentaire/list-commentaire/list-commentaire.component';
 import { ReservationContratComponent } from './main/apps/reservation-contrat/reservation-contrat.component';
 import { NgxPrintModule } from 'ngx-print';
+import { ListEchangeComponent } from './main/apps/Echange/list-echange/list-echange.component';
+import { AddEchangeComponent } from './main/apps/Echange/add-echange/add-echange.component';
  
   
  
@@ -95,8 +97,13 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'voiture',
-    loadChildren: () => import('./main/apps/voiture/voiture.module').then(m => m.voitureModule),
+    path: 'Offre',
+    loadChildren: () => import('./main/apps/Offre/offre.module').then(m => m.OffreModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'Echange',
+    loadChildren: () => import('./main/apps/Echange/echange.module').then(m => m.EchangeModule),
     canActivate: [AuthGuard]
   },
   {
@@ -107,6 +114,16 @@ const appRoutes: Routes = [
   {
     path: 'ListContrat',
     loadChildren: () => import('./main/apps/reservation-contrat/contrat.module').then(m => m.ContratModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'vente',
+    loadChildren: () => import('./main/apps/vente/vente.module').then(m => m.VenteModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'location',
+    loadChildren: () => import('./main/apps/location/location.module').then(m => m.LocationModule),
     canActivate: [AuthGuard]
   },
   {
@@ -141,7 +158,9 @@ UpdateVoitureComponent,
 ListPaiementComponent,
 ListCommandeComponent,
 ListCommentaireComponent,
- ReservationContratComponent
+ ReservationContratComponent,
+ ListEchangeComponent,
+ AddEchangeComponent
     ],
   imports: [
     NgxPrintModule,

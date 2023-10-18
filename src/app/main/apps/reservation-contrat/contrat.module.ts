@@ -7,7 +7,8 @@ import { AddReservationComponent } from './add-reservation/add-reservation.compo
 import { ReservationContratComponent } from './reservation-contrat.component';
 import { ContratVenteComponent } from './contrat-vente/contrat-vente.component';
 import { ContratEchangeComponent } from './contrat-echange/contrat-echange.component';
- 
+import { ListEchangeComponent } from '../Echange/list-echange/list-echange.component';
+  
 
 const routes: Routes = [
   {
@@ -16,6 +17,9 @@ const routes: Routes = [
   } ,{
     path: 'ListContrat',
     component: ReservationContratComponent,
+  } ,{
+    path: 'ListEchange',
+    component: ListEchangeComponent,
   } 
 
 ];
@@ -26,8 +30,8 @@ const routes: Routes = [
 
   
     ContratVenteComponent,
-                ContratEchangeComponent
-  ],
+                ContratEchangeComponent,
+   ],
   imports: [
     CommonModule, RouterModule.forChild(routes)
   ]

@@ -1,0 +1,87 @@
+
+ 
+  
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add Vente</h4>
+     
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editForm"     >
+          
+         
+         
+           
+          <div class="form-group"  >
+            <label>VoitureA </label>
+            <input type="text" class="form-control"   formControlName="voiture" id="voiture"    >
+             
+            <div class="err" *ngIf=" f.voiture.invalid &&(f.voiture.touched ||f.voiture.touched)">
+                <div *ngIf="f.voiture.errors.required" class="text-danger">*voiture is required
+                 </div>
+          </div>
+            </div>
+          <div class="form-group">
+            <label>ClientAcheteur </label>
+            <input type="text" class="form-control" formControlName="ClientAcheteur" id="ClientAcheteur">
+            <div class="err" *ngIf=" f.ClientAcheteur.invalid &&(f.ClientAcheteur.touched ||f.ClientAcheteur.touched)">
+                <div *ngIf="f.ClientAcheteur.errors.required" class="text-danger">*ClientAcheteur is required
+                 </div>
+          </div>
+        </div>
+          <div class="form-group">
+            <label>AgentDeVente </label>
+            <input type="text" class="form-control" formControlName="AgentDeVente" id="AgentDeVente"   >
+            <div class="err" *ngIf=" f.AgentDeVente.invalid &&(f.AgentDeVente.touched ||f.AgentDeVente.touched)">
+                <div *ngIf="f.AgentDeVente.errors.required" class="text-danger">*AgentDeVente is required
+                 
+        </div>
+          </div>
+          <div class="form-group">
+            <label>StatutVente </label>
+            <input type="text" class="form-control" formControlName="StatutVente" id="StatutVente"   >
+            <div class="err" *ngIf=" f.StatutVente.invalid &&(f.StatutVente.touched ||f.StatutVente.touched)">
+                <div *ngIf="f.StatutVente.errors.required" class="text-danger">*StatutVente is required
+                 
+        </div>
+          </div>
+          <div class="form-group">
+            <label>DateVente </label>
+            <input type="date" class="form-control" formControlName="DateVente" id="DateVente"   >
+            <div class="err" *ngIf=" f.DateVente.invalid &&(f.DateVente.touched ||f.DateVente.touched)">
+                <div *ngIf="f.prix.errors.required" class="text-danger">*Prix is required
+                 
+        </div>
+        </div>
+        <div class="form-group">
+            <label>Prix </label>
+            <input type="text" class="form-control" formControlName="prix" id="prix"   >
+            <div class="err" *ngIf=" f.prix.invalid &&(f.prix.touched ||f.prix.touched)">
+                <div *ngIf="f.prix.errors.required" class="text-danger">*Prix is required
+                 
+        </div>
+          </div>
+          <div class="form-group">
+            <select class="form-control" formControlName="offre" id="offre">
+              <option value="">Sélectionnez une option</option>
+              <option *ngFor="let option of userlist" [value]="option.id">{{ option.id }}</option>
+            </select>
+            </div>
+            </div>
+     
+         
+                
+           
+            <button  [hidden]="edited" type="submit" class="btn btn-dark" (click)="onSubmit()"  ><i class="fa fa-database"></i>  <img *ngIf="IsLoading" src="assets/images/loading.gif" style="width: 24px;"> Submit
+             
+            </button>
+          
+            <button  class="btn btn-primary mr-2" (click)="modal.close('Cancel')">Fermer</button>
+    </div>
+          
+          </div>
+          </div>
+        </form>
+      
+       
+    
+      

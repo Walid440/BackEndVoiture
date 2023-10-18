@@ -25,13 +25,47 @@ export const menu: CoreMenu[] = [
     translate: 'MENU.APPS.SECTION',
     icon: 'package',
     children: [
+    
       {
-        id: 'email',
+        id: 'e-commerce',
         title: 'Offre',
+       
+        type: 'collapsible',
+        icon: 'package',
+        children: [
+          {
+            id: 'email',
+        title: 'Liste',
         
         type: 'item',
-        icon: 'package',
+        icon: 'circle',
         url: 'apps/Offre/listOff'
+          },
+          {
+            id: 'Echange',
+            title: 'Echange',
+   
+            type: 'item',
+            icon: 'circle',
+            url: 'apps/Echange/ListEchange'
+          },
+          {
+            id: 'Vente',
+            title: 'Vente',
+            
+            type: 'item',
+            icon: 'circle',
+            url: 'apps/vente/ListVente'
+          },
+          {
+            id: 'Location',
+            title: 'Location',
+            
+            type: 'item',
+            icon: 'circle',
+            url: 'apps/location/ListLocation'
+          }
+        ]
       },
       {
         id: 'chat',

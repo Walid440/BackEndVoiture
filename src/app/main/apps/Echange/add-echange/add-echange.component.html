@@ -1,0 +1,66 @@
+
+ 
+  
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add Offre</h4>
+     
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editForm"  enctype="multipart/form-data"    >
+          
+      
+          <div class="form-group"  >
+            <label>Propritaire1 </label>
+            <input type="text" class="form-control"   formControlName="propritaire1" id="propritaire1"    >
+             
+            <div class="err" *ngIf=" f.propritaire1.invalid &&(f.propritaire1.touched ||f.propritaire1.touched)">
+                <div *ngIf="f.propritaire1.errors.required" class="text-danger">*propritaire1 is required
+                 </div>
+          </div>
+            </div>
+          <div class="form-group">
+            <label>Modele1 </label>
+            <input type="text" class="form-control" formControlName="modele1" id="modele1">
+            <div class="err" *ngIf=" f.modele1.invalid &&(f.modele1.touched ||f.modele1.touched)">
+                <div *ngIf="f.modele1.errors.required" class="text-danger">*Modele1 is required
+                 </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label>Marque1 </label>
+            <input type="text" class="form-control" formControlName="marque1" id="marque1"   >
+            <div class="err" *ngIf=" f.marque1.invalid &&(f.marque1.touched ||f.marque1.touched)">
+                <div *ngIf="f.modele2.errors.required" class="text-danger">*Marque1 is required
+      
+        </div>
+          </div>
+          
+   
+      
+          <div class="form-group">
+            <label>Annee1 </label>
+            <input type="date" class="form-control" formControlName="annee1" id="annee1"   >
+            <div class="err" *ngIf=" f.annee1.invalid &&(f.annee1.touched ||f.annee1.touched)">
+                <div *ngIf="f.annee1.errors.required" class="text-danger">*annee1 is required
+      
+        </div>
+          </div>
+          <div class="form-group">
+          <select class="form-control" formControlName="offre" id="offre">
+            <option value="">Sélectionnez une option</option>
+            <option *ngFor="let option of userlist1" [value]="option.id">{{ option.id }}</option>
+          </select>
+          </div>
+
+            <button  [hidden]="edited" type="submit" class="btn btn-dark" (click)="onSubmit()"  ><i class="fa fa-database"></i>  <img *ngIf="IsLoading" src="assets/images/loading.gif" style="width: 24px;"> Submit
+             
+            </button>
+          
+            <button  class="btn btn-primary mr-2" (click)="modal.close('Cancel')">Fermer</button>
+      </div>
+          </div>
+        </form>
+      
+       
+    
+      

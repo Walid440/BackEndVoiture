@@ -1,28 +1,27 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { UpdateCommandeComponent } from '../update-commande/update-commande.component';
-import { commande } from 'app/auth/models/commande';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
 import { CoreConfigService } from '@core/services/config.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
-import { offre } from 'app/auth/models/offre';
+ 
+import { commande } from 'app/auth/models/commande';
+import { echange } from 'app/auth/models/echange';
 import { Subject } from 'rxjs';
-import { AddOffreComponent } from '../../Offre/add-offre/add-offre.component';
-import { ServicesService } from '../../services.service';
-import Swal from 'sweetalert2';
-import { AddReservationComponent } from '../../reservation-contrat/add-reservation/add-reservation.component';
-import { ContratVenteComponent } from '../../reservation-contrat/contrat-vente/contrat-vente.component';
-import { ContratEchangeComponent } from '../../reservation-contrat/contrat-echange/contrat-echange.component';
+import { UpdateCommandeComponent } from '../commande/update-commande/update-commande.component';
+import { AddReservationComponent } from '../reservation-contrat/add-reservation/add-reservation.component';
+import { ContratEchangeComponent } from '../reservation-contrat/contrat-echange/contrat-echange.component';
+import { ContratVenteComponent } from '../reservation-contrat/contrat-vente/contrat-vente.component';
+import { ServicesService } from '../services.service';
+import { AddVenteComponent } from '../vente/add-vente/add-vente.component';
 
 @Component({
-  selector: 'app-list-commande',
-  templateUrl: './list-commande.component.html',
-  styleUrls: ['./list-commande.component.scss']
+  selector: 'app-location',
+  templateUrl: './location.component.html',
+  styleUrls: ['./location.component.scss']
 })
-export class ListCommandeComponent implements OnInit {
-
+export class LocationComponent implements OnInit {
   public sidebarToggleRef = false;
   public rows;
   
@@ -71,7 +70,7 @@ userlist:any;
   public selectedPlan = [];
   public selectedStatus = [];
   public searchValue = '';
-  personl:commande; reactiveForm: FormGroup;
+  personl:echange; reactiveForm: FormGroup;
   // Decorator
   @ViewChild(DatatableComponent) table: DatatableComponent;
   @Input() data: string;
@@ -106,7 +105,7 @@ userlist:any;
   }*/
   open(){
  
-    const ref = this.modalService.open(AddOffreComponent,  { size: '', backdrop: 'static' });
+    const ref = this.modalService.open(AddVenteComponent,  { size: '', backdrop: 'static' });
          
     
         ref.result.then((yes) => {
@@ -246,7 +245,7 @@ const ref =this.modalService.open(AddReservationComponent)
         this.IsLoading=true;
 
         setTimeout(()=>{    
-         this.ListCommande();
+         this.ListLocation()
   
           //Swal.fire("Element Supprimé avec sucées !!!")
       
@@ -354,19 +353,19 @@ const ref =this.modalService.open(AddReservationComponent)
     })*/
   }
   get f(){return this.editForm.controls}
-  ListCommande(){
+  ListLocation(){
 
-    this.Person.getAllCommande().subscribe( res => {
+    this.Person.getAllLocation().subscribe( res => {
      
       
-      this.data = res;
-      this.rows = this.data;
-   
+       
+      this.rows = res;
+   console.log("res"+res)
        
     });
   }
   ngOnInit(): void {
-   this.ListCommande()
+   this.ListLocation()
     
   }
 

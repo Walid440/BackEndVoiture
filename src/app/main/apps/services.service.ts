@@ -9,6 +9,8 @@ import { UserService } from 'app/auth/service';
 import { offre } from 'app/auth/models/offre';
 import { produit } from 'app/auth/models/produit';
 import { commande } from 'app/auth/models/commande';
+import { echange } from 'app/auth/models/echange';
+import { vente } from 'app/auth/models/vente';
  
  
 @Injectable({
@@ -64,7 +66,11 @@ export class ServicesService {
     return this.http.post<offre>("http://localhost:8090/CreateOffre",person);
     
   }
- 
+  
+  public CreateVente(person:vente,id:number){
+    return this.http.post<any>("http://localhost:8090/CreateVente/"+id,person);
+    
+  }
   public CreateProduit(person:produit){
     return this.http.post<any>("http://localhost:8090/CreateProd",person);
     
@@ -114,6 +120,11 @@ export class ServicesService {
     return this.http.get<any>("http://localhost:8090/AllProd");
 
   }
+  public getAllLocation()
+  {
+    return this.http.get<any>("http://localhost:8090/AllLocation");
+
+  }
   public getAllCommande()
   {
     return this.http.get<any>("http://localhost:8090/allCom");
@@ -122,6 +133,38 @@ export class ServicesService {
   public getCalendarByid(id:number)
   {
     return this.http.get<offre>("http://localhost:8089/SpringMVC/calendars/"+id);
+
+
+  }
+  public getType(id:number)
+  {
+    return this.http.get<offre>("http://localhost:8090/getType/"+id);
+
+
+  }
+  public getProduitCom(id:number)
+  {
+    return this.http.get<offre>("  http://localhost:8090/getProduitCom/"+id);
+
+
+  }
+
+  public getAllEchange()
+  {
+    return this.http.get<offre>("http://localhost:8090/allEchange");
+
+
+  }
+  public getAllVente()
+  {
+    return this.http.get<offre>("http://localhost:8090/AllVente");
+
+
+  }
+  
+  public CreateEchange(person:echange,id:number)
+  {
+    return this.http.post<echange>("http://localhost:8090/CreateEchange/"+id,person);
 
 
   }

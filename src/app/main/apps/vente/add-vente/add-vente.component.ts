@@ -1,21 +1,19 @@
-import { DatePipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpHeaders } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ColumnMode } from '@swimlane/ngx-datatable';
-import { commande } from 'app/auth/models/commande';
 import { offre } from 'app/auth/models/offre';
 import { ServicesService } from '../../services.service';
+import { vente } from 'app/auth/models/vente';
 
 @Component({
-  selector: 'app-contrat-echange',
-  templateUrl: './contrat-echange.component.html',
-  styleUrls: ['./contrat-echange.component.scss']
+  selector: 'app-add-vente',
+  templateUrl: './add-vente.component.html',
+  styleUrls: ['./add-vente.component.scss']
 })
-export class ContratEchangeComponent implements OnInit {
+export class AddVenteComponent implements OnInit {
 
-  @ViewChild('content',{static:false})el!:ElementRef
   editForm:FormGroup;
   public sidebarToggleRef = false;
   public rows;
@@ -26,12 +24,11 @@ export class ContratEchangeComponent implements OnInit {
   public previousStatusFilter = '';
   closeResult :String;
   public searchValue = '';
-  personl:commande=new commande(); 
+  personl:vente=new vente(); 
   reactiveForm: FormGroup;
   delete=false;
   userFile;
-  userlist: any;
-  userlist1: any;
+  userlist:any;
   imgURL: any;
   imagePath: any;
   message: string;
@@ -47,17 +44,31 @@ export class ContratEchangeComponent implements OnInit {
   myGroup: FormGroup;
   IsLoading: boolean;
 list: offre;
-  data: any;
-  constructor( private datePipe: DatePipe, private http: HttpClient,private fb:FormBuilder,private modalService: NgbModal,public modal:NgbActiveModal, public Person: ServicesService) { }
-styleString:string = '';
+  constructor(private fb:FormBuilder,private modalService: NgbModal,public modal:NgbActiveModal, public Person: ServicesService) { }
+
   ngOnInit(): void {
    
-  
-    this.ListCommandeByid()
-  
- this.Type()
- 
+    this.editForm=new FormGroup({
+      voiture:new FormControl('',[Validators.required]),
+      ClientAcheteur:new FormControl('',[Validators.required]),
+      AgentDeVente:new FormControl('',[Validators.required]),
+      StatutVente:new FormControl('',[Validators.required]),
+      DateVente:new FormControl('',[Validators.required]),
+      prix:new FormControl('',[Validators.required]),
+      offre:new FormControl('',[Validators.required]),
+     
+    });
+      
+ this.listVehicule()
+ this.listOffre()
   }
+  
+listOffre(){
+  this.Person.getListOffre().subscribe( data => {   
+    this.userlist=data;       
+    
+        });
+}
   filterUpdate(event) {
     // Reset ng-select on search
    
@@ -98,29 +109,54 @@ styleString:string = '';
       this.editForm.enabled;
      
     }, 1820);
-
+this.modal.close();
    
 
 }
+onSubmit() {
+  let headers = new HttpHeaders();
+
+  const formData = new  FormData();
+  const article = this.editForm.value;
+ this.personl.VoitureA=article.voitureA;
+  this.personl.AgentDeVente=article.AgentDeVente;
+  this.personl.DateVente=article.DateVente;
+ this.personl.ClientAcheteur=article.ClientAcheteur;
+ this.personl.prix=article.prix;
+// Créez une date au format JavaScript
+   // Convertissez-la en chaîne au format "YYYY-MM-DD"
+ 
+  /*formData.append('voitureA',article.voiture);
+  formData.append('clientAcheteur',article.clientAcheteur);
+  formData.append('prix',article.prix);
+ formData.append('DateVente',article.DateVente);
+ formData.append('offre',article.offre);
+ formData.append('StatutVente',article.StatutVente);*/
+
+    //console.log("cabin"+this.myGroup.value.cabins)
+ // this.personl.cabins=article.cabin;*/
+ // this.personl.cabins=article.cabin;
+
+
+
+
+
+
+  this.Person.CreateVente(this.personl,article.offre).subscribe( data => {   
+    this.Loading();
+    
+   });
   
-Type() {
-  this.Person.getType(this.personl.id).subscribe((res: any) => {
-    this.userlist = res;
-    
-
-
-  });
+  
 }
-ListCommandeByid() {
-  this.Person.getCommandeById(this.personl.id).subscribe((res: any) => {
-    this.userlist1 = res;
-    
+listVehicule(){
 
-     
-  });
+  this.Person.getAllVehicule().subscribe( data => {   
+this.list=data;       
+
+console.log(data)
+   });
 }
-
-
 Loadin() {
   this.modal.close();
 
@@ -157,31 +193,6 @@ onSelectFile(event) {
 }
 
 
- 
-printToPDF() {
-  const printArea: HTMLElement = document.getElementById('content');
-  const printWindow = window.open('', 'PRINT')!;
-  printWindow.document.write(`<html><head><style>${this.styleString}</style></head><body>${printArea.innerHTML}</body>`);
-  printWindow.document.close();
-  printWindow.focus();
-  printWindow.print();
-}
-
-
-
- 
 
 
 }
-
-
-
- 
-
-
-
-
-
-
-
-

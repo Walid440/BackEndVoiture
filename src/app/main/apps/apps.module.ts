@@ -19,6 +19,10 @@ import { DatatablesModule } from '../tables/datatables/datatables.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { UpdateOffreComponent } from './Offre/update-offre/update-offre.component';
 import { AddReservationComponent } from './reservation-contrat/add-reservation/add-reservation.component';
+import { VenteComponent } from './vente/vente.component';
+import { AddVenteComponent } from './vente/add-vente/add-vente.component';
+import { LocationComponent } from './location/location.component';
+import { AddLocationComponent } from './location/add-location/add-location.component';
  
 
 // routing
@@ -51,6 +55,11 @@ const routes: Routes = [
   }
   ,
   {
+    path: 'Echange',
+    loadChildren: () => import('./Echange/echange.module').then(m => m.EchangeModule)
+  }
+  ,
+  {
     path: 'paiement',
     loadChildren: () => import('./paiement/paiement.module').then(m => m.paiementModule)
   }
@@ -68,6 +77,16 @@ const routes: Routes = [
     path: 'comment',
     loadChildren: () => import('./commentaire/commentaire.module').then(m => m.CommentModule)
   }
+  ,
+  {
+    path: 'vente',
+    loadChildren: () => import('./vente/vente.module').then(m => m.VenteModule)
+  }
+  ,
+  {
+    path: 'location',
+    loadChildren: () => import('./location/location.module').then(m => m.LocationModule)
+  }
 ];
 
 FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]);
@@ -76,7 +95,11 @@ FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, i
   declarations: [
 
   
-    AddReservationComponent
+    AddReservationComponent,
+        VenteComponent,
+        AddVenteComponent,
+        LocationComponent,
+        AddLocationComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [CommonModule, RouterModule.forChild(routes),ReactiveFormsModule,FormsModule,DatatablesModule,NgxDatatableModule],
