@@ -15,6 +15,7 @@ import { ContratEchangeComponent } from '../reservation-contrat/contrat-echange/
 import { ContratVenteComponent } from '../reservation-contrat/contrat-vente/contrat-vente.component';
 import { ServicesService } from '../services.service';
 import { AddVenteComponent } from '../vente/add-vente/add-vente.component';
+import { AddLocationComponent } from './add-location/add-location.component';
 
 @Component({
   selector: 'app-location',
@@ -105,7 +106,7 @@ userlist:any;
   }*/
   open(){
  
-    const ref = this.modalService.open(AddVenteComponent,  { size: '', backdrop: 'static' });
+    const ref = this.modalService.open(AddLocationComponent,  { size: '', backdrop: 'static' });
          
     
         ref.result.then((yes) => {

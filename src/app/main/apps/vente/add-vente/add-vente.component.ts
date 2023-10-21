@@ -66,7 +66,7 @@ list: offre;
 listOffre(){
   this.Person.getListOffre().subscribe( data => {   
     this.userlist=data;       
-    
+    console.log(this.userlist)
         });
 }
   filterUpdate(event) {

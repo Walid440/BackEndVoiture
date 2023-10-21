@@ -55,6 +55,7 @@ export class AddOffreComponent implements OnInit {
         dateOffre:new FormControl('',[Validators.required]),
         adresse:new FormControl('',[Validators.required]),
         photo:new FormControl('',[Validators.required]),
+        prod:new FormControl('',[Validators.required]),
         photo2:new FormControl('',[Validators.required,Validators.nullValidator])
       });
         
@@ -123,12 +124,12 @@ export class AddOffreComponent implements OnInit {
     formData.append('photo2',article.photo2+".png");
     formData.append('photo',article.photo);
     formData.append('file',this.userFile);  
- 
+    formData.append('prod',article.prod);  
       //console.log("cabin"+this.myGroup.value.cabins)
    // this.personl.cabins=article.cabin;*/
    // this.personl.cabins=article.cabin;
      
-    this.Person.CreateOffre(formData).subscribe( data => {   
+    this.Person.CreateOffre(formData,article.prod).subscribe( data => {   
       this.Loading();
        if(article.photo2=="vente")
        {
@@ -139,6 +140,7 @@ export class AddOffreComponent implements OnInit {
     
     
   }
+   
   listVehicule(){
 
     this.Person.getAllVehicule().subscribe( data => {   

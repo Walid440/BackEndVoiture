@@ -1,0 +1,56 @@
+/* Style du conteneur principal */
+#panorama {
+    width: 100%; /* Ajustez la largeur selon vos besoins */
+    height: 500px; /* Ajustez la hauteur selon vos besoins */
+    margin: 0 auto;
+}
+
+/* Style des points d'accès (hotspots) */
+.pannellum-hotspot {
+    width: 30px; /* Largeur du point d'accès */
+    height: 30px; /* Hauteur du point d'accès */
+    background-color: #ff0000; /* Couleur de fond du point d'accès */
+    border: 2px solid #ffffff; /* Bordure du point d'accès */
+    border-radius: 50%; /* Forme circulaire */
+    position: absolute;
+}
+
+/* Style du texte du point d'accès */
+.pannellum-hotspot .pannellum-hotspot-text {
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 5px;
+    background-color: #000000;
+    border-radius: 5px;
+    position: absolute;
+    top: -50px; /* Position au-dessus du point d'accès */
+    left: 50%; /* Position centrée par rapport au point d'accès */
+    transform: translateX(-50%); /* Centrage horizontal */
+}
+
+/* Style des informations contextuelles */
+.pannellum-tooltip {
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px; /* Position au-dessus du point d'accès */
+    left: 10px; /* Position à gauche du point d'accès */
+    max-width: 200px;
+}
+
+/* Style de la flèche de la tooltip */
+.pannellum-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px; /* Ajustez la marge pour centrer la flèche */
+    border-width: 10px;
+    border-style: solid;
+    border-color: #000000 transparent transparent transparent;
+}

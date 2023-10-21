@@ -62,8 +62,8 @@ export class ServicesService {
     return this.http.get<any>("http://localhost:8090/AllPaiement");
     
   }
-  public CreateOffre(person:FormData){
-    return this.http.post<offre>("http://localhost:8090/CreateOffre",person);
+  public CreateOffre(person:FormData,id:number){
+    return this.http.post<offre>("http://localhost:8090/CreateOffre/"+id,person);
     
   }
   
@@ -71,8 +71,8 @@ export class ServicesService {
     return this.http.post<any>("http://localhost:8090/CreateVente/"+id,person);
     
   }
-  public CreateProduit(person:produit){
-    return this.http.post<any>("http://localhost:8090/CreateProd",person);
+  public CreateProduit(person:FormData){
+    return this.http.post<any>("http://localhost:8090/CreateProduit",person);
     
   }
     public search(start:string,end:string){
