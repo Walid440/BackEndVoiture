@@ -6,6 +6,10 @@ import { Subject } from 'rxjs';
 
 import { AuthenticationService } from 'app/auth/service';
 import { CoreConfigService } from '@core/services/config.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+ import { AuthRegisterV2Component } from 'app/main/User/authentication/auth-register-v2/auth-register-v2.component';
+import { ServicesService } from 'app/main/apps/services.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-auth-login-v2',
@@ -31,7 +35,7 @@ export class AuthLoginV2Component implements OnInit {
    *
    * @param {CoreConfigService} _coreConfigService
    */
-  constructor(
+  constructor(private modalService: NgbModal,public Person : ServicesService,
     private _coreConfigService: CoreConfigService,
     private _formBuilder: FormBuilder,
     private _route: ActivatedRoute,
@@ -74,19 +78,21 @@ export class AuthLoginV2Component implements OnInit {
   togglePasswordTextType() {
     this.passwordTextType = !this.passwordTextType;
   }
-
-  onSubmit() {
+  onSubmit1() {
     this.submitted = true;
 
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-      return;
-    }
+  
+  
+      
+  }
+  onSubmit() {
+    this.submitted = true;
+ 
 
     // Login
     this.loading = true;
     this._authenticationService
-      .login(this.f.email.value, this.f.password.value)
+      .login(this.f.email.value)
       .pipe(first())
       .subscribe(
         data => {
@@ -127,5 +133,11 @@ export class AuthLoginV2Component implements OnInit {
     // Unsubscribe from all subscriptions
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
+  }
+  Register(){
+
+    const ref = this.modalService.open(AuthRegisterV2Component,  { size: 'lg', backdrop: 'static' });
+    
+ 
   }
 }

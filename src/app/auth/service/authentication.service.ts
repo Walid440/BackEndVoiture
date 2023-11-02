@@ -51,13 +51,13 @@ export class AuthenticationService {
    * @param password
    * @returns user
    */
-  login(email: string, password: string) {
+  login(email: string) {
     return this._http
-      .post<any>(`${environment.apiUrl}/users/authenticate`, { email, password })
+      .get<any>("http://localhost:8090/Recherche/"+email)
       .pipe(
         map(user => {
           // login successful if there's a jwt token in the response
-          if (user && user.token) {
+          if (user.email) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(user));
 

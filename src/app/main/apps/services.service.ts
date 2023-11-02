@@ -11,6 +11,7 @@ import { produit } from 'app/auth/models/produit';
 import { commande } from 'app/auth/models/commande';
 import { echange } from 'app/auth/models/echange';
 import { vente } from 'app/auth/models/vente';
+import { User } from 'app/auth/models/user';
  
  
 @Injectable({
@@ -161,13 +162,23 @@ export class ServicesService {
 
 
   }
-  
+  public Recherche(email:String)
+  {
+    return this.http.get<User>("http://localhost:8090/Recherche/"+email);
+
+
+  }
+  public Register(user:User){
+    return this.http.post<any>("http://localhost:8090/register",user);
+    
+  }
   public CreateEchange(person:echange,id:number)
   {
     return this.http.post<echange>("http://localhost:8090/CreateEchange/"+id,person);
 
 
   }
+  
   rows:any;
   public onUserListChanged: BehaviorSubject<any>;
 
