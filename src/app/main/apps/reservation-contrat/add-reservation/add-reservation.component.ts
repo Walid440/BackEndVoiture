@@ -104,6 +104,7 @@ styleString:string = '';
 
 }
  
+ 
 ListCommandeByid() {
   this.Person.getCommandeById(this.personl.id).subscribe((res: any) => {
     this.userlist = res;
@@ -112,7 +113,6 @@ ListCommandeByid() {
      
   });
 }
-
 
 Loadin() {
   this.modal.close();

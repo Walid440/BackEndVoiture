@@ -8,5 +8,5 @@ nomOffre :String;
 dateOffre:string;
 adresse:String;
 type:String;
-
+prod:string;
 }

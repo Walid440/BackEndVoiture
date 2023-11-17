@@ -27,16 +27,17 @@
         <h2>Renseignements Relatif au Conducteur </h2>
         <p><strong>Nom   :</strong> {{this.userlist["clientNom"]}}</p>
         <p><strong>Prenom  :</strong>{{this.userlist["clientPrenom"] }}</p>
-         <p><strong>Telephone :</strong> {{this.userlist["telephone"]}}</p>
+         <p><strong>Telephone :</strong> {{this.userlist["clienttelephone"]}}</p>
          <p><strong>Email :</strong>{{this.userlist["clientmail"]}} </p>
-         <p><strong>Né(e) le:</strong>{{this.userlist["niassance"]}} </p>
+         <p><strong>Né(e) le:</strong>{{this.userlist["clientnaissance"]}} </p>
          <p><strong>Permis de conduire</strong> {{this.userlist["clientPermis"] }}</p>  <p><strong>Delivré le :</strong> {{this.userlist["clientDelivre"] }}</p>
   
   
 
         <h2>Informations sur la Voiture</h2>
-        <p><strong>Modèle de la Voiture :</strong> {{this.userlist["voiture"]}}</p>
-        <p><strong>Immatriculation :</strong> {{this.userlist["voiture"]}}</p>
+        <p><strong>Modèle de la Voiture :</strong> {{this.userlist["produitModele"]}}</p>
+        <p><strong>Marque de la Voiture :</strong> {{this.userlist["produitMarque"]}}</p>
+        <p><strong>Immatriculation :</strong> {{this.userlist["produitImatricule"]}}</p>
         <img src="schema-voiture.png" alt="Schéma de la voiture">
 
         <h2>Mode de Paiement</h2>

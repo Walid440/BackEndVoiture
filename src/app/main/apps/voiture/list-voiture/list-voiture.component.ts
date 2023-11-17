@@ -120,8 +120,8 @@ userlist:any;
     const val = event.target.value.toLowerCase();
 
     // filter our data
-    const temp = this.tempData.filter(function (d) {
-      return d.userName.toLowerCase().indexOf(val) !== -1 || !val;
+    const temp = this.data.filter(function (d) {
+      return d.marque.toLowerCase().indexOf(val) !== -1 || !val;
     });
 
     // update the rows

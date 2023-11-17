@@ -56,6 +56,9 @@ export class AddOffreComponent implements OnInit {
         adresse:new FormControl('',[Validators.required]),
         photo:new FormControl('',[Validators.required]),
         prod:new FormControl('',[Validators.required]),
+        prix:new FormControl('',[Validators.required]),
+        file:new FormControl('',[Validators.required]),
+
         photo2:new FormControl('',[Validators.required,Validators.nullValidator])
       });
         
@@ -125,6 +128,7 @@ export class AddOffreComponent implements OnInit {
     formData.append('photo',article.photo);
     formData.append('file',this.userFile);  
     formData.append('prod',article.prod);  
+    formData.append('prix',article.prix);  
       //console.log("cabin"+this.myGroup.value.cabins)
    // this.personl.cabins=article.cabin;*/
    // this.personl.cabins=article.cabin;

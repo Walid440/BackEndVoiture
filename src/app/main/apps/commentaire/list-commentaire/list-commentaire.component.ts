@@ -62,7 +62,7 @@ date:any;
    getCalendr()
    {
     console.log(this.date)
-    this.rec.getCommentStatistic(this.editForm.get('date').value).subscribe(res=>{ this.dat=res
+    this.rec.getCommentStatistic(this.editForm.value.date).subscribe(res=>{ this.dat=res
  
       this.chart = new Chart("canvas", {
               

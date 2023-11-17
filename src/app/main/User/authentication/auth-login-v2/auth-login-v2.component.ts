@@ -78,14 +78,22 @@ export class AuthLoginV2Component implements OnInit {
   togglePasswordTextType() {
     this.passwordTextType = !this.passwordTextType;
   }
-  onSubmit1() {
+  onSubmit() {
     this.submitted = true;
 
-  
+    this.Person.Recherche(this.loginForm.value.email).subscribe(res =>{
+      if (res && res['email'] === this.loginForm.value.email) {
+        this._router.navigate([this.returnUrl]);
+      }
+      else{
+        Swal.fire("Email n'existe pas veuillez s'inscrire!!");
+      }
+    });
+
   
       
   }
-  onSubmit() {
+   onSubmit1() {
     this.submitted = true;
  
 

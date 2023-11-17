@@ -114,11 +114,11 @@ console.log(this.userlist)
   });
 }
 ListCommandeByid() {
-  this.Person.getProduitCom(this.personl.id).subscribe((res: any) => {
-   this.userlist1 = res;
-    
+  this.Person.getCommandeById(this.personl.id).subscribe((res: any) => {
+    this.userlist1 = res;
+   
 
- 
+     
   });
 } Listclient() {
   this.Person.getCommandeById(this.personl.id).subscribe((res: any) => {

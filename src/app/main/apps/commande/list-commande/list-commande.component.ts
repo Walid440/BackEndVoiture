@@ -212,7 +212,7 @@ setTimeout (() => {
       PrintItem(Per:commande)
    {      this.Person.getCommandeById(Per.id).subscribe((res: any) => {
     this.userlist = res;
-    console.log(this.userlist['type'])
+   // console.log(this.userlist['type'])
 if(this.userlist['type']=="vente")
 {
 const ref =this.modalService.open(ContratVenteComponent)

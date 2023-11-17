@@ -44,7 +44,14 @@
     <option value="echange">Echange</option>
   </select>
   </div>
-   
+  <div class="form-group">
+    <label>prix </label>
+    <input type="text" class="form-control" formControlName="prix" id="prix">
+    <div class="err" *ngIf=" f.prix.invalid &&(f.prix.touched ||f.prix.touched)">
+        <div *ngIf="f.prix.errors.required" class="text-danger">*prix is required
+         </div>
+  </div>
+  </div>
       
           <div class="form-group">
               <label>File Upload  </label>
@@ -71,6 +78,7 @@
       </div>
           </div>
           </div>
+        
         </form>
       </div>
       

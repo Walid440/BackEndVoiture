@@ -9,6 +9,7 @@ import { ServicesService } from 'app/main/apps/services.service';
 import { User } from 'app/auth/models';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
+import * as toastr from 'toastr';
 
 @Component({
   selector: 'app-auth-register-v2',
@@ -17,6 +18,7 @@ import Swal from 'sweetalert2';
   encapsulation: ViewEncapsulation.None
 })
 export class AuthRegisterV2Component implements OnInit {
+  [x: string]: any;
   // Public
   public coreConfig: any;
   public passwordTextType: boolean;
@@ -134,7 +136,7 @@ active:boolean=false;
       if (res && res['email'] === this.registerForm.value.email) {
         this.active = false;
         Swal.fire("Email déjà existant ! Veuillez utiliser une autre adresse.");
-      } else {
+      } else { Swal.fire("Opération réussie! Svp, vérifier votre mail pour completer l'inscription ");
         this.Person.Register(this.personl).subscribe();
       }
       

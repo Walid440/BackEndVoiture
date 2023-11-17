@@ -125,8 +125,9 @@ userlist:any;
     const val = event.target.value.toLowerCase();
 
     // filter our data
-    const temp = this.tempData.filter(function (d) {
-      return d.userName.toLowerCase().indexOf(val) !== -1 || !val;
+    const temp = this.data.filter(function (d) {
+      return d.nomOffre.toLowerCase().indexOf(val) !== -1 || !val;
+  
     });
 
     // update the rows
@@ -287,7 +288,7 @@ setTimeout (() => {
     planFilter = planFilter.toLowerCase();
     statusFilter = statusFilter.toLowerCase();
 
-    return this.tempData.filter(row => {
+    return this.data.filter(row => {
       const isPartialNameMatch = row.userName.toLowerCase().indexOf(roleFilter) !== -1 || !roleFilter;
       const isPartialGenderMatch = row.currentPlan.toLowerCase().indexOf(planFilter) !== -1 || !planFilter;
       const isPartialStatusMatch = row.status.toLowerCase().indexOf(statusFilter) !== -1 || !statusFilter;

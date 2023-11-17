@@ -1,0 +1,7 @@
+{
+    "/": {
+      "target": "http://localhost:55423/pages/authentication/login-v2",
+      "secure": true
+    }
+  }
+  

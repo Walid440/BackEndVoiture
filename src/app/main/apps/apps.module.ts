@@ -23,11 +23,13 @@ import { VenteComponent } from './vente/vente.component';
 import { AddVenteComponent } from './vente/add-vente/add-vente.component';
 import { LocationComponent } from './location/location.component';
 import { AddLocationComponent } from './location/add-location/add-location.component';
+import { AuthLoginV2Component } from '../User/authentication/auth-login-v2/auth-login-v2.component';
  
 
 // routing
 const routes: Routes = [
-  
+  { path: 'pages/authentication/login-v2', component: AuthLoginV2Component },
+  { path: 'http://localhost:55423', redirectTo: 'pages/authentication/login-v2', pathMatch: 'full' },
   {
     path: 'chat',
     loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)

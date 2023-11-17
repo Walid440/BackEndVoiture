@@ -50,6 +50,7 @@ import { NgxPrintModule } from 'ngx-print';
 import { ListEchangeComponent } from './main/apps/Echange/list-echange/list-echange.component';
 import { AddEchangeComponent } from './main/apps/Echange/add-echange/add-echange.component';
  
+
   
  
 const appRoutes: Routes = [
@@ -135,6 +136,11 @@ const appRoutes: Routes = [
     path: '',
     redirectTo: '/',
     pathMatch: 'full'
+  },
+  {
+    path: 'localhost:55423',
+    redirectTo: '/pages/authentication/login-v2'
+   
   },
   {
     path: '**',
