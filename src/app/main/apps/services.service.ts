@@ -178,7 +178,10 @@ export class ServicesService {
 
 
   }
-  
+  public Login(email:string,pass:string){
+    return this.http.get<User>("http://localhost:8090/validatePassword/"+email+"/"+pass);
+    }
+    
   rows:any;
   public onUserListChanged: BehaviorSubject<any>;
 
