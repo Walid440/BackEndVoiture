@@ -49,6 +49,8 @@ import { ReservationContratComponent } from './main/apps/reservation-contrat/res
 import { NgxPrintModule } from 'ngx-print';
 import { ListEchangeComponent } from './main/apps/Echange/list-echange/list-echange.component';
 import { AddEchangeComponent } from './main/apps/Echange/add-echange/add-echange.component';
+import { UpdateUserComponent } from './main/apps/user/update-user/update-user.component';
+import { UpdateCommandeComponent } from './main/apps/commande/update-commande/update-commande.component';
  
 
   
@@ -133,6 +135,11 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'user',
+    loadChildren: () => import('./main/apps/user/user.module').then(m => m.UserModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: '',
     redirectTo: '/',
     pathMatch: 'full'
@@ -166,7 +173,8 @@ ListCommandeComponent,
 ListCommentaireComponent,
  ReservationContratComponent,
  ListEchangeComponent,
- AddEchangeComponent
+ AddEchangeComponent,
+ UpdateUserComponent,UpdateCommandeComponent
     ],
   imports: [
     NgxPrintModule,

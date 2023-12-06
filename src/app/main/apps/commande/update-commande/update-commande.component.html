@@ -1,1 +1,44 @@
-<p>update-commande works!</p>
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update Commande</h4>
+</div>
+<div class="modal-body">
+    <form [formGroup]="editForm">
+        <div class="form-group">
+            <label>DateDebut </label>
+            <input type="date" class="form-control" formControlName="dateDebut" id="dateDebut">
+            <div class="err" *ngIf="f.dateDebut.invalid && (f.dateDebut.touched || f.dateDebut.touched)">
+                <div *ngIf="f.dateDebut.errors.required" class="text-danger">*DateDebut required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>dateFin </label>
+            <input type="text" class="form-control" formControlName="dateFin" id="dateFin">
+            <div class="err" *ngIf="f.dateFin.invalid && f.dateFin.touched">
+                <div *ngIf="f.dateFin.errors && f.dateFin.errors.required" class="text-danger">*DateFin is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="statusSelect">Status:</label>
+            <select class="form-control" id="statusSelect" formControlName="status" name="status">
+                <option value="Encours">En cours</option>
+                <option value="Accepter">Accepter</option>
+                <option value="Annuler">Refuser</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <div class="modal-body">
+                <button [hidden]="edited" type="submit" class="btn btn-dark" (click)="onSubmit()">
+                    <i class="fa fa-database"></i> <img *ngIf="IsLoading" src="assets/images/loading.gif" style="width: 24px;"> Submit
+                </button>
+
+                <button class="btn btn-primary mr-2" (click)="modal.close('Cancel')">Fermer</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+    
+      

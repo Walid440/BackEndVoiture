@@ -56,9 +56,9 @@ styleString:string = '';
    
   
     this.ListCommandeByid()
-  
+    this.ListCommandeByUser()
  this.Type()
- this.Listclient()
+ 
   }
   filterUpdate(event) {
     // Reset ng-select on search
@@ -114,20 +114,25 @@ console.log(this.userlist)
   });
 }
 ListCommandeByid() {
-  this.Person.getCommandeById(this.personl.id).subscribe((res: any) => {
-    this.userlist1 = res;
-   
-
-     
-  });
-} Listclient() {
-  this.Person.getCommandeById(this.personl.id).subscribe((res: any) => {
-    this.userlist2 = res;
-    
-
-     
+  this.Person.getCommandeById(this.personl.id).subscribe(res=> {
+    this.userlist = res;
+ 
+    this.Person.getIdProd(this.userlist["idProd"]).subscribe(res=> {
+      this.userlist2 = res;
+ 
+  
+        
+    });
   });
 }
+ListCommandeByUser() {
+  this.Person.getCommandeByUser(this.personl.id).subscribe(res=> {
+    this.userlist1 = res;
+
+     console.log(this.userlist["location"]["dateDebut"])
+  });
+};
+
 
 
 Loadin() {

@@ -25,11 +25,11 @@
     <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
       <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
         <div class="w-100 d-lg-flex align-items-center justify-content-center px-5">
-          <img src="assets/images/logo/gif.gif" alt="funny GIF" width="90%">
+          
         </div>
         <br>   <br>   <br>
-        <h2 class="card-title font-weight-bold mb-1 d-lg-flex align-items-center justify-content-center">Welcome to DELISAS!👋</h2>
-        <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
+        <h2 class="card-title font-weight-bold mb-1 d-lg-flex align-items-center justify-content-center">Bienvenue chez Françliens!👋</h2>
+        <p class="card-text mb-2">Connectez-vous à votre compte et commencez l'aventure</p>
         <ngb-alert [type]="'primary'" [dismissible]="false">
           <div class="alert-body font-small-2">
             <p>
@@ -73,7 +73,7 @@
           <div class="form-group">
             <div class="d-flex justify-content-between">
               <label for="login-password">Password</label
-              ><a routerLink="/pages/authentication/forgot-password-v2"><small>Forgot Password?</small></a>
+              ><a routerLink="/pages/authentication/forgot-password-v2"><small>Mot de passe oublié?</small></a>
             </div>
             <div class="input-group input-group-merge form-password-toggle">
               <input
@@ -113,10 +113,10 @@
             </div>
           </div>
           <button [disabled]="loading" class="btn btn-primary btn-block" tabindex="4" rippleEffect>
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Sign in
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Se connecter
           </button>
           <div class="text-center">
-            <a class="small" (click)="Register()">Already have an account? Login!</a>
+            <a class="small" (click)="Register()">Avez-vous déjà un compte ? Connectez-vous !</a>
            </div>
         </form>
        

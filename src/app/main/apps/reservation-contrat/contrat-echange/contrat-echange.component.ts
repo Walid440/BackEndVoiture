@@ -48,13 +48,16 @@ export class ContratEchangeComponent implements OnInit {
   IsLoading: boolean;
 list: offre;
   data: any;
+  userlist2: import("c:/Users/walid/BackEndVoiture/src/app/auth/models/user").User;
+  userlist3: any;
+  userlist4: any;
   constructor( private datePipe: DatePipe, private http: HttpClient,private fb:FormBuilder,private modalService: NgbModal,public modal:NgbActiveModal, public Person: ServicesService) { }
 styleString:string = '';
   ngOnInit(): void {
    
   
     this.ListCommandeByid()
-  
+   this. ListCommandeByUser()
  this.Type()
  
   }
@@ -112,14 +115,26 @@ Type() {
   });
 }
 ListCommandeByid() {
-  this.Person.getCommandeById(this.personl.id).subscribe((res: any) => {
-    this.userlist1 = res;
-    
-
-     
+  this.Person.getCommandeById(this.personl.id).subscribe(res=> {
+    this.userlist = res;
+ 
+    this.Person.getIdProd(this.userlist["idProd"]).subscribe(res=> {
+      this.userlist3 = res;
+ 
+      this.Person.getIdEchange(this.userlist["echange"]["idE"]).subscribe(res=> {
+        this.userlist4 = res;
+        });
+        
+    });
   });
 }
-
+ListCommandeByUser() {
+  this.Person.getCommandeByUser(this.personl.id).subscribe(res=> {
+    this.userlist2 = res;
+console.log(this.userlist2)
+   });
+}
+ 
 
 Loadin() {
   this.modal.close();

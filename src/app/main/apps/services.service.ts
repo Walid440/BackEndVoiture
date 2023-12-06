@@ -37,10 +37,13 @@ export class ServicesService {
     
   }
   public getCommandeById(id:number){
-    return this.http.get<commande>("http://localhost:8090/getIdCommande/"+id);
+    return this.http.get<offre>("http://localhost:8090/CommandeOffre/"+id);
     
   }
-  
+  public getCommandeByUser(id:number){
+    return this.http.get<User>("http://localhost:8090/CommandeUser/"+id);
+    
+  }
   create(id:number,start:string,end:string,offre: FormData) {
     return this.http.post<offre>("http://localhost:8089/SpringMVC/offre/CreateF/"+start+"/"+end+"/"+id,offre);  }
     UpdateFile(id:number,start:string,end:string,offre: offre) {
@@ -53,6 +56,14 @@ export class ServicesService {
       return this.http.put<offre>("http://localhost:8090/offre/UpdateF/"+id+"/"+start+"/"+end,offre);  }
   public EditOffre(person:offre){
     return this.http.put<offre>("http://localhost:8090/offre/UpdateOffre",person);
+    
+  }
+  public EditUser(user:User){
+    return this.http.put<User>("http://localhost:8090/UpdateUser",user);
+    
+  }
+  public EditCommande(com:commande,id:number){
+    return this.http.put<any>("http://localhost:8090/UpdateCommande/"+id,com);
     
   }
   public EditProd(person:produit){
@@ -76,12 +87,17 @@ export class ServicesService {
     return this.http.post<any>("http://localhost:8090/CreateProduit",person);
     
   }
+
     public search(start:string,end:string){
     return this.http.get<offre>("http://localhost:8089/SpringMVC/offre/calendars/search/"+start+"/"+end);
     
   }
   public DeleteOffre(id:number){
     return this.http.delete<offre>("http://localhost:8090/DeleteOffre/"+id);
+    
+  }
+  public DeleteUser(id:number){
+    return this.http.delete<User>("http://localhost:8090/DeleteUser/"+id);
     
   }
   public DeleteProd(id:number){
@@ -102,6 +118,20 @@ export class ServicesService {
   }
   public getFeryById(id:number){
     return this.http.get<any>("http://localhost:8089/SpringMVC/Ferry/getIdFerry/"+id);
+    
+  }
+
+  public GetAllUsers(){
+    return this.http.get<any>("http://localhost:8090/AllUsers");
+    
+  }
+
+  public getIdProd(id:number){
+    return this.http.get<any>("http://localhost:8090/getIdProd/"+id);
+    
+  }
+  public getIdEchange(id:number){
+    return this.http.get<any>("http://localhost:8090/getIdEchange/"+id);
     
   }
   public getAllPassenger()

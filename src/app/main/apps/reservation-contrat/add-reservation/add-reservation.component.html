@@ -18,26 +18,27 @@
  
        <br>
        <br>
-        <p><strong>Date et heure de Départ   :</strong> {{this.userlist["dateDebut"]}}</p>
-        <p><strong>Date et heure de Retour  :</strong> {{this.userlist["dateFin"]}}</p>
+        <p><strong>Date et heure de Départ   :</strong> {{this.userlist["location"]["dateDebut"]}}</p>
+        <p><strong>Date et heure de Retour  :</strong> {{this.userlist["location"]["dateFin"]}}</p>
  
         
 
 
         <h2>Renseignements Relatif au Conducteur </h2>
-        <p><strong>Nom   :</strong> {{this.userlist["clientNom"]}}</p>
-        <p><strong>Prenom  :</strong>{{this.userlist["clientPrenom"] }}</p>
-         <p><strong>Telephone :</strong> {{this.userlist["clienttelephone"]}}</p>
-         <p><strong>Email :</strong>{{this.userlist["clientmail"]}} </p>
-         <p><strong>Né(e) le:</strong>{{this.userlist["clientnaissance"]}} </p>
-         <p><strong>Permis de conduire</strong> {{this.userlist["clientPermis"] }}</p>  <p><strong>Delivré le :</strong> {{this.userlist["clientDelivre"] }}</p>
+        <p><strong>Nom   :</strong> {{this.userlist1["firstName"]}}</p>
+        <p><strong>Prenom  :</strong>{{this.userlist1["lastName"] }}</p>
+         <p><strong>Telephone :</strong> {{this.userlist1["telephone"]}}</p>
+         <p><strong>Email :</strong>{{this.userlist1["email"]}} </p>
+         <p><strong>Né(e) le:</strong>{{this.userlist1["naissance"]}} </p>
+         <p><strong>Permis de conduire</strong> {{this.userlist1["permis"] }}</p>  <p><strong>Delivré le :</strong> {{this.userlist1 ["delivre"] }}</p>
   
   
 
         <h2>Informations sur la Voiture</h2>
-        <p><strong>Modèle de la Voiture :</strong> {{this.userlist["produitModele"]}}</p>
-        <p><strong>Marque de la Voiture :</strong> {{this.userlist["produitMarque"]}}</p>
-        <p><strong>Immatriculation :</strong> {{this.userlist["produitImatricule"]}}</p>
+        <p><strong>Modèle de la Voiture :</strong> {{this.userlist2["modele"]}}</p>
+        <p><strong>Marque de la Voiture :</strong> {{this.userlist2["marque"]}}</p>
+        <p><strong>Immatriculation :</strong> {{this.userlist2["immatriculation"]}}</p>
+        <p><strong>Annee :</strong> {{this.userlist2["annee"]}}</p>
         <img src="schema-voiture.png" alt="Schéma de la voiture">
 
         <h2>Mode de Paiement</h2>
@@ -51,7 +52,7 @@
             <input type="checkbox" name="payment" value="cheque"> Paiement par Chèque
         </label>
         <h2>Prix Total</h2>
-        <p><strong>Prix Total :</strong> {{this.userlist["prix"]}} euro <!-- Remplacez par le montant réel -->
+        <p><strong>Prix Total :</strong> {{this.userlist["location"]["prix"]}} euro <!-- Remplacez par le montant réel -->
 
         <div class="signature">
             <p>Signature du Client :</p>

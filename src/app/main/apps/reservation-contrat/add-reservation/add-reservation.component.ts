@@ -32,7 +32,7 @@ export class AddReservationComponent implements OnInit {
   delete=false;
   userFile;
   userlist: any;
-
+  userlist2: any;
   imgURL: any;
   imagePath: any;
   message: string;
@@ -49,15 +49,18 @@ export class AddReservationComponent implements OnInit {
   IsLoading: boolean;
 list: offre;
   data: any;
+  userlist1: import("c:/Users/walid/BackEndVoiture/src/app/auth/models/user").User;
   constructor( private datePipe: DatePipe, private http: HttpClient,private fb:FormBuilder,private modalService: NgbModal,public modal:NgbActiveModal, public Person: ServicesService) { }
 styleString:string = '';
   ngOnInit(): void {
    
   
     this.ListCommandeByid()
-  
  
+
  
+    this.ListCommandeByUser()
+ this.prod()
   }
   filterUpdate(event) {
     // Reset ng-select on search
@@ -104,16 +107,28 @@ styleString:string = '';
 
 }
  
- 
-ListCommandeByid() {
-  this.Person.getCommandeById(this.personl.id).subscribe((res: any) => {
-    this.userlist = res;
-    console.log("userlist", this.userlist['dateDebut']);
+prod() {
 
-     
+}
+ListCommandeByid() {
+  this.Person.getCommandeById(this.personl.id).subscribe(res=> {
+    this.userlist = res;
+ 
+    this.Person.getIdProd(this.userlist["idProd"]).subscribe(res=> {
+      this.userlist2 = res;
+ 
+  
+        
+    });
   });
 }
+ListCommandeByUser() {
+  this.Person.getCommandeByUser(this.personl.id).subscribe(res=> {
+    this.userlist1 = res;
 
+     console.log(this.userlist["location"]["dateDebut"])
+  });
+}
 Loadin() {
   this.modal.close();
 

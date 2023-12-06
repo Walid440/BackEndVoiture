@@ -33,6 +33,7 @@ export const menu: CoreMenu[] = [
         type: 'collapsible',
         icon: 'package',
         children: [
+          
           {
             id: 'email',
         title: 'Liste',
@@ -68,6 +69,14 @@ export const menu: CoreMenu[] = [
         ]
       },
       {
+        id: 'User',
+    title: 'User',
+    
+    type: 'item',
+    icon: 'user',
+    url: 'apps/user/listUser'
+      },
+      {
         id: 'chat',
         title: 'voiture',
         type: 'item',
@@ -95,14 +104,6 @@ export const menu: CoreMenu[] = [
         type: 'item',
         icon:'bar-chart',
         url: 'apps/comment/comment'
-      },
-      {
-        id: 'Contrat',
-        title: 'Contrat',
-      
-        type: 'item',
-        icon:'menu',
-        url: 'apps/contrat/ListContrat'
       }
        
      

@@ -12,7 +12,7 @@
          
         
         <div class="form-group"  >
-          <label>Nom Produit </label>
+          <label>Nom Voiture </label>
           <input type="text" class="form-control"   formControlName="nomProd" id="nomProd"    >
            
           <div class="err" *ngIf=" f.nomProd.invalid &&(f.nomProd.touched ||f.nomProd.touched)">
@@ -41,8 +41,22 @@
        
 </div>
 
-      
-     
+<div class="form-group">
+  <label>Couleur </label>
+  <input type="text" class="form-control" formControlName="couleur" id="couleur"   >
+  <div class="err" *ngIf="f.couleur.invalid && f.couleur.touched">
+    <div *ngIf="f.couleur.errors && f.couleur.errors.required" class="text-danger">*Couleur is required</div>
+
+
+</div>
+<div class="form-group">
+  <label>Km </label>
+  <input type="number" class="form-control" formControlName="km" id="km"   >
+  <div class="err" *ngIf="f.km.invalid && f.km.touched">
+    <div *ngIf="f.km.errors && f.km.errors.required" class="text-danger">*Km is required</div>
+
+
+</div>
         
 <div class="form-group">
     <label>Prix </label>
@@ -61,7 +75,25 @@
     
  
 </div>
+<div class="form-group">
+  <label for="carType"> Type:</label>
+  <select  class="form-control" id="type" formControlName="type">
+    <option value="Diesel">Diesel</option>
+    <option value="Essence">Essence</option>
+    <option value="Electrique">Electrique</option>
+    <!-- Add other options as needed -->
+  </select>
+</div>
+<div class="form-group">
+  <label for="Boite"> Boite:</label>
+  <select  class="form-control" id="boite" formControlName="boite">
+    <option value="Automatique">Automatique</option>
+    <option value="Manuel">Manuel</option>
  
+    <!-- Add other options as needed -->
+  </select>
+</div>
+
       
     <div class="form-group">
       <label>photo1 </label>

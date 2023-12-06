@@ -1,6 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { UpdateCommandeComponent } from '../update-commande/update-commande.component';
-import { commande } from 'app/auth/models/commande';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoreSidebarService } from '@core/components/core-sidebar/core-sidebar.service';
@@ -9,23 +7,21 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
 import { offre } from 'app/auth/models/offre';
 import { Subject } from 'rxjs';
-import { AddOffreComponent } from '../../Offre/add-offre/add-offre.component';
-import { ServicesService } from '../../services.service';
-import Swal from 'sweetalert2';
-import { AddReservationComponent } from '../../reservation-contrat/add-reservation/add-reservation.component';
-import { ContratVenteComponent } from '../../reservation-contrat/contrat-vente/contrat-vente.component';
-import { ContratEchangeComponent } from '../../reservation-contrat/contrat-echange/contrat-echange.component';
+import { AddOffreComponent } from '../Offre/add-offre/add-offre.component';
+import { UpdateOffreComponent } from '../Offre/update-offre/update-offre.component';
+import { ServicesService } from '../services.service';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 @Component({
-  selector: 'app-list-commande',
-  templateUrl: './list-commande.component.html',
-  styleUrls: ['./list-commande.component.scss']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
 })
-export class ListCommandeComponent implements OnInit {
+export class UserComponent implements OnInit {
 
   public sidebarToggleRef = false;
   public rows;
-  
+  public data: any;
   public selectedOption = 10;
   public ColumnMode = ColumnMode;
   public temp = [];
@@ -71,10 +67,10 @@ userlist:any;
   public selectedPlan = [];
   public selectedStatus = [];
   public searchValue = '';
-  personl:commande; reactiveForm: FormGroup;
+  personl:offre; reactiveForm: FormGroup;
   // Decorator
   @ViewChild(DatatableComponent) table: DatatableComponent;
-  @Input() data: string;
+
   // Private
   private tempData = [];
   private _unsubscribeAll: Subject<any>;
@@ -129,8 +125,9 @@ userlist:any;
     const val = event.target.value.toLowerCase();
 
     // filter our data
-    const temp = this.tempData.filter(function (d) {
-      return d.userName.toLowerCase().indexOf(val) !== -1 || !val;
+    const temp = this.data.filter(function (d) {
+      return d.nomOffre.toLowerCase().indexOf(val) !== -1 || !val;
+  
     });
 
     // update the rows
@@ -173,9 +170,9 @@ setTimeout (() => {
  
 
 }
-  editItem(Per:commande){
+  editItem(Per:offre){
  
-    const ref = this.modalService.open(UpdateCommandeComponent,  { size: 'lg', backdrop: 'static' });
+    const ref = this.modalService.open(UpdateUserComponent,  { size: 'lg', backdrop: 'static' });
         ref.componentInstance.personl = Per;
     console.log(Per);
         ref.result.then((yes) => {
@@ -199,55 +196,14 @@ setTimeout (() => {
       
             })
       }
-    */  
+    */ 
+    deleteItem(per: offre) {
 
-      ListCommandeByid(com:number) {
-        this.Person.getCommandeById(com).subscribe((res: any) => {
-          this.userlist = res;
-          console.log("userlist", this.userlist['type']);
-       
-           
-        });
-      }
-      PrintItem(Per:commande)
-   {     
-     this.Person.getCommandeById(Per.id).subscribe((res: any) => {
-    this.userlist = res;
-   // console.log(this.userlist['type'])
-if(this.userlist['photo2']=="vente.png")
-{
-const ref =this.modalService.open(ContratVenteComponent)
-    ref.componentInstance.personl = Per;
-    
-}
-      
-else if(this.userlist['photo2']==="echange.png")
-{
-const ref =this.modalService.open(ContratEchangeComponent)
-    ref.componentInstance.personl = Per;
-    //console.log(this.userlist['type'])
-}
-else if(this.userlist['photo2']=="location.png")
-{
-const ref =this.modalService.open(AddReservationComponent)
-    ref.componentInstance.personl = Per;
-     
-} 
-      
-   
-  });
-    
-   
-       
-    
-   }
-    deleteItem(per: commande) {
-
-      this.Person.DeleteCommande(per.id).subscribe(res=>{
+      this.Person.DeleteUser(per.id).subscribe(res=>{
         this.IsLoading=true;
 
         setTimeout(()=>{    
-         this.ListCommande();
+         this.ListUsers();
   
           //Swal.fire("Element Supprimé avec sucées !!!")
       
@@ -332,7 +288,7 @@ const ref =this.modalService.open(AddReservationComponent)
     planFilter = planFilter.toLowerCase();
     statusFilter = statusFilter.toLowerCase();
 
-    return this.tempData.filter(row => {
+    return this.data.filter(row => {
       const isPartialNameMatch = row.userName.toLowerCase().indexOf(roleFilter) !== -1 || !roleFilter;
       const isPartialGenderMatch = row.currentPlan.toLowerCase().indexOf(planFilter) !== -1 || !planFilter;
       const isPartialStatusMatch = row.status.toLowerCase().indexOf(statusFilter) !== -1 || !statusFilter;
@@ -355,20 +311,22 @@ const ref =this.modalService.open(AddReservationComponent)
     })*/
   }
   get f(){return this.editForm.controls}
-  ListCommande(){
+  ListUsers(){
 
-    this.Person.getAllCommande().subscribe( res => {
+    this.Person.GetAllUsers().subscribe( res => {
      
       
       this.data = res;
       this.rows = this.data;
-   
-           console.log(""+res );
+      //this.tempData = this.rows;
+     
+     console.log(this.rows);
+       
     });
   }
   ngOnInit(): void {
-   this.ListCommande()
-
+   this.ListUsers()
+    
   }
 
   /**

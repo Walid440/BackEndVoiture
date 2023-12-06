@@ -64,6 +64,11 @@ export class AddVoitureComponent implements OnInit {
         modele:new FormControl('',[Validators.required]),
         prix:new FormControl('',[Validators.required]),
         annee:new FormControl('',[Validators.required]),
+        type:new FormControl('',[Validators.required]),
+        boite:new FormControl('',[Validators.required]),
+
+        couleur:new FormControl('',[Validators.required]),
+        km:new FormControl('',[Validators.required]),
         photo1:new FormControl('',[Validators.required]),
         photo2:new FormControl('',[Validators.required]),
         photo3:new FormControl('',[Validators.required]),
@@ -129,6 +134,10 @@ export class AddVoitureComponent implements OnInit {
    formData.append('modele',article.modele);
    formData.append('annee',article.annee);
    formData.append('prix',article.prix);
+   formData.append('couleur',article.couleur);
+   formData.append('km',article.km);
+   formData.append('type',article.type);
+   formData.append('boite',article.boite);
    formData.append('photo1',article.photo1);
    formData.append('photo2',article.photo2);
    formData.append('photo3',article.photo3);

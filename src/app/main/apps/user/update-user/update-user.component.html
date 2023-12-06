@@ -1,0 +1,90 @@
+ 
+   
+     
+  
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Update User</h4>
+   
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="editForm"     >
+        
+       
+    
+        
+      
+      <div class="form-group"  >
+        <label>FirstName </label>
+        <input type="text" class="form-control"   formControlName="firstName" id="firstName"    >
+         
+        <div class="err" *ngIf=" f.firstName.invalid &&(f.firstName.touched ||f.firstName.touched)">
+            <div *ngIf="f.userName.errors.required" class="text-danger">*First name is required
+             </div>
+      </div>
+        </div>
+      <div class="form-group">
+        <label>LastName </label>
+        <input type="text" class="form-control" formControlName="lastName" id="lastname" >
+        <div class="err" *ngIf=" f.lastName.invalid &&(f.lastName.touched ||f.lastName.touched)">
+            <div *ngIf="f.lastName.errors.required" class="text-danger">*lastName is required
+             </div>
+      </div>
+      
+      </div>
+      <div class="form-group">
+        <label>Email </label>
+        <input type="text" class="form-control" formControlName="email" id="email"   >
+        <div class="err" *ngIf=" f.email.invalid &&(f.email.touched ||f.email.touched)">
+            <div *ngIf="f.email.errors.required" class="text-danger">*email is required
+             
+    </div>
+      </div>
+      <div class="form-group">
+        <label>Telephone </label>
+        <input type="text" class="form-control" formControlName="telephone" id="telephone">
+        <div class="err" *ngIf=" f.telephone.invalid &&(f.telephone.touched ||f.telephone.touched)">
+            <div *ngIf="f.telephone.errors.required" class="text-danger">*Telephone is required</div>
+        </div>   
+    
+    </div>
+    <div class="form-group">
+        <label>Permis </label>
+        <input type="text" class="form-control" formControlName="permis" id="permis">
+        <div class="err" *ngIf=" f.permis.invalid &&(f.permis.touched ||f.permis.touched)">
+            <div *ngIf="f.permis.errors.required" class="text-danger">*permis is required</div>
+        </div>   
+    
+    </div>
+  
+    <div class="form-group">
+        <label >Role :</label>
+<select id="role"  class="form-control" formControlName="role" name="role" >
+  <option value="User">User</option>
+  <option value="Admin">Admin</option>
+ 
+</select>
+</div>
+     
+    </div>
+      
+      
+      
+     
+      <div class="form-group">    <div class="modal-body" >
+            
+       
+        <button    type="submit" class="btn btn-dark" (click)="onSubmit()"  ><i class="fa fa-database"></i><img    src="../assets/giphy.gif" style="width:50px" [hidden]="!edited" /> Submit
+         
+        </button>
+      
+        <button  class="btn btn-primary mr-2" (click)="modal.close('Cancel')">Cancel</button>
+    
+   </div>
+  </div>
+           
+      
+    </form>
+          </div>
+     
+  
+    

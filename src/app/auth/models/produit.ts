@@ -8,6 +8,10 @@ export class produit {
   marque: string;
   modele: string;
   prix:string;
+  type:string;
+  couleur:string;
+  km:any;
+  boite:string;
   annee: number;
   offre: offre;
   photo1:string;

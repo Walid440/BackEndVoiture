@@ -24,6 +24,7 @@ import { AddVenteComponent } from './vente/add-vente/add-vente.component';
 import { LocationComponent } from './location/location.component';
 import { AddLocationComponent } from './location/add-location/add-location.component';
 import { AuthLoginV2Component } from '../User/authentication/auth-login-v2/auth-login-v2.component';
+import { UserComponent } from './user/user.component';
  
 
 // routing
@@ -89,6 +90,11 @@ const routes: Routes = [
     path: 'location',
     loadChildren: () => import('./location/location.module').then(m => m.LocationModule)
   }
+  ,
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  }
 ];
 
 FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]);
@@ -101,7 +107,8 @@ FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, i
         VenteComponent,
         AddVenteComponent,
         LocationComponent,
-        AddLocationComponent
+        AddLocationComponent,
+        UserComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [CommonModule, RouterModule.forChild(routes),ReactiveFormsModule,FormsModule,DatatablesModule,NgxDatatableModule],

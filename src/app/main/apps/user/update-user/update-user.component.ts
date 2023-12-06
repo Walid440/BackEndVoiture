@@ -3,33 +3,31 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { offre } from 'app/auth/models/offre';
-import { produit } from 'app/auth/models/produit';
+import Swal from 'sweetalert2';
 import { ServicesService } from '../../services.service';
-import { combineEventUis } from '@fullcalendar/angular';
-import { commande } from 'app/auth/models/commande';
+import { User } from 'app/auth/models';
 
 @Component({
-  selector: 'app-update-commande',
-  templateUrl: './update-commande.component.html',
-  styleUrls: ['./update-commande.component.scss']
+  selector: 'app-update-user',
+  templateUrl: './update-user.component.html',
+  styleUrls: ['./update-user.component.scss']
 })
-export class UpdateCommandeComponent implements OnInit {
-
+export class UpdateUserComponent implements OnInit {
   editForm:FormGroup;
-    public sidebarToggleRef = false;
+  public sidebarToggleRef = false;
     public rows;
     public selectedOption = 10;
-    public temp = [];
+     public temp = [];
     public previousRoleFilter = '';
     public previousPlanFilter = '';
     public previousStatusFilter = '';
     closeResult :String;
     public searchValue = '';
-    personl:commande=new commande(); 
+    personl:User=new User(); 
     reactiveForm: FormGroup;
-    delete=false;
+    dateStr!:string ;
     userFile;
-    userlist:any;
+  userlist:any;
     imgURL: any;
     imagePath: any;
     message: string;
@@ -37,33 +35,47 @@ export class UpdateCommandeComponent implements OnInit {
     loader=true;
     tempData: any;
     table: any;
+    role:any;
     public ColumnMode = ColumnMode;
     submitted: boolean;
     public edited = false;
-    Cabin: any;
-    public editable: boolean;
-    myGroup: FormGroup;
-    IsLoading: boolean;
-  list: offre;
-    constructor(private fb:FormBuilder,private modalService: NgbModal,public modal:NgbActiveModal, public Person: ServicesService) { }
-  
+    //roles:Roles=new Roles();
+    constructor(private fb:FormBuilder,private modalService: NgbModal,public modal:NgbActiveModal, public Person : ServicesService) { }
+    dateOffre:any;
+    id:any;
     ngOnInit(): void {
-     
-      
-      this.editForm = this.fb.group({
-        id:[this.personl.id, Validators.required],
-            dateDebut:[this.personl.dateDebut, Validators.required],
-            dateFin: [this.personl.dateFin, Validators.required],
-            status: [this.personl.status, Validators.required],
-           
-          })
-
-console.log(this.personl.id)
-          this.listVehicule();
-        }
-        
-   
     
+    this.editForm = this.fb.group({
+  
+      firstName:[this.personl.firstName, Validators.required],
+      lastName: [this.personl.lastName, Validators.required],
+      email: [this.personl.email, Validators.required],
+      telephone: [this.personl.telephone, Validators.required],
+      permis: [this.personl.permis, Validators.required],
+      role: [this.personl.role, Validators.required]
+    })
+  
+  }
+  
+  convertToText() {
+   const dateInput = document.getElementById('dateOffre') as HTMLInputElement;
+   if (dateInput.value === '') 
+    { dateInput.type="text";
+     //this.editForm.get('dateOffre').setValue(this.personl.dateOffre);
+    }
+  }
+// Exemple d'utilisation
+
+
+
+  Role(){
+    /*this.Person.getListOfPersonByid(this.personl.idUser).subscribe(response => {
+       this.userlist = response['roles'][0];
+      this.role=  this.userlist['idroles'];
+   console.log(this.userlist['name']);
+    })*/
+  }
+   
     filterUpdate(event) {
       // Reset ng-select on search
      
@@ -93,61 +105,58 @@ console.log(this.personl.id)
     }
     
     RoleError =false;
+    validat(value){
+  if (this.editForm.value.role==="")
+  {
+    this.RoleError=false;
+  
+  }
+  else   {
+    this.RoleError=true;
+  }
+  console.log(this.RoleError)
     
+    }
     get f(){return this.editForm.controls} 
   
     Loading() {
-      this.IsLoading=true;
+      this.loader=true;
     this.editForm.disabled;
     setTimeout (() => {
-        this.IsLoading=false
+        this.loader=false
         this.editForm.enabled;
-       
-      }, 1820);
+      }, 1800);
   
      
   
   }
   onSubmit() {
    
-  
-    //const formData = new  FormData();
+     const formData = new  FormData();
     const article = this.editForm.value;
-   this.personl.status=article.status;
-    this.personl.dateDebut=article.dateDebut;
-    this.personl.dateFin=article.dateFin;
-    
-  
+    this.personl.firstName=article.firstName;
+    this.personl.lastName=article.lastName;
+    this.personl.email=article.email;
+    this.personl.telephone=article.telephone;
+    this.personl.permis=article.permis;
+    this.personl.role=article.role;
+    //formData.append('User',JSON.stringify(article));
    // formData.append('file',this.userFile);  
- 
-
-     //console.log("cabin"+this.myGroup.value.cabins)
-   // this.personl.cabins=article.cabin;*/
-   // this.personl.cabins=article.cabin;
-    
-    this.Person.EditCommande(this.personl,this.personl.id).subscribe( data => {   
+    this.Person.EditUser(this.personl).subscribe( data => {   
       this.Loading();
-       
-  
-     });
-    }
+      this.Loadin()
+       this.modal.close();
+     })
     
-  
-  listVehicule(){
-
-    this.Person.getAllVehicule().subscribe( data => {   
-this.list=data;       
-  
-console.log(data)
-     });
   }
   Loadin() {
-    this.modal.close();
+  this.edited=true;
+  
   
   setTimeout (() => {
-  
-   
-  }, 5200);
+    this.edited=false;
+    Swal.fire("Element Modifier avec succes",'success');
+  }, 500);
   
   
   
@@ -161,7 +170,7 @@ console.log(data)
   
     var mimeType = event.target.files[0].type;
     if (mimeType.match(/image\/*/) == null) {
-      //this.message = "Only images are supported.";
+      this.message = "Only images are supported.";
       return;
     }
   
@@ -174,4 +183,6 @@ console.log(data)
     }
   }
   }
+
 }
+
