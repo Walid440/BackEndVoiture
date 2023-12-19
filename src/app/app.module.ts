@@ -51,7 +51,8 @@ import { ListEchangeComponent } from './main/apps/Echange/list-echange/list-echa
 import { AddEchangeComponent } from './main/apps/Echange/add-echange/add-echange.component';
 import { UpdateUserComponent } from './main/apps/user/update-user/update-user.component';
 import { UpdateCommandeComponent } from './main/apps/commande/update-commande/update-commande.component';
- 
+import { StaistiqueComponent } from './main/apps/staistique/staistique.component';
+  
 
   
  
@@ -130,6 +131,11 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'Stat',
+    loadChildren: () => import('./main/apps/staistique/statistique.module').then(m => m.StaistiqueModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'charts-and-maps',
     loadChildren: () => import('./main/charts-and-maps/charts-and-maps.module').then(m => m.ChartsAndMapsModule),
     canActivate: [AuthGuard]
@@ -174,7 +180,7 @@ ListCommentaireComponent,
  ReservationContratComponent,
  ListEchangeComponent,
  AddEchangeComponent,
- UpdateUserComponent,UpdateCommandeComponent
+ UpdateUserComponent,UpdateCommandeComponent,StaistiqueComponent
     ],
   imports: [
     NgxPrintModule,

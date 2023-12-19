@@ -70,6 +70,10 @@ export class ServicesService {
     return this.http.put<any>("http://localhost:8090/UpdateProduit",person);
     
   }
+  public Statistique(id:any){
+    return this.http.get<any>("http://localhost:8090/Statistique/"+id);
+    
+  }
   public Paiement(){
     return this.http.get<any>("http://localhost:8090/AllPaiement");
     

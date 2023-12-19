@@ -91,10 +91,17 @@ const routes: Routes = [
     loadChildren: () => import('./location/location.module').then(m => m.LocationModule)
   }
   ,
+  
+  {
+    path: 'staistique',
+    loadChildren: () => import('./staistique/statistique.module').then(m => m.StaistiqueModule)
+  }
+  ,
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   }
+  
 ];
 
 FullCalendarModule.registerPlugins([dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]);

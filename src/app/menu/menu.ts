@@ -105,7 +105,14 @@ export const menu: CoreMenu[] = [
         icon:'bar-chart',
         url: 'apps/comment/comment'
       }
-       
+      ,{
+        id: 'Statistique',
+        title: 'Statistique',
+      
+        type: 'item',
+        icon:'pie-chart',
+        url: 'apps/staistique/ListStatistique'
+      }
      
       
     ]
